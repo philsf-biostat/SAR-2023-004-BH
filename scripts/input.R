@@ -26,6 +26,7 @@ data.raw <- data.raw %>%
     everything(),
   ) %>%
   rename(
+    id = Mod1id,
   ) %>%
   mutate(
   ) %>%
@@ -36,15 +37,15 @@ data.raw <- data.raw %>%
 
 data.raw <- data.raw %>%
   mutate(
-    id = factor(id), # or as.character
+    id = as.character(id), # or as.factor
   )
 
 # labels ------------------------------------------------------------------
 
 data.raw <- data.raw %>%
   set_variable_labels(
-    exposure = "Study exposure",
-    outcome = "Study outcome",
+    # exposure = "Study exposure",
+    # outcome = "Study outcome",
   )
 
 # analytical dataset ------------------------------------------------------
@@ -53,9 +54,9 @@ analytical <- data.raw %>%
   # select analytic variables
   select(
     id,
-    exposure,
-    outcome,
-    everything(),
+    # exposure,
+    # outcome,
+    # everything(),
   )
 
 Nvar_final <- analytical %>% ncol
