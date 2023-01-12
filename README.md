@@ -1,6 +1,6 @@
 # [title]
 
-Objective
+To determine the effect of social economic status of the neighborhood on mortality of patients with brain injury.
 
 Statistical Analysis for Brennan Hickson (US, 2023)
 <!-- Technical Report for Brennan Hickson (US, 2023) -->
