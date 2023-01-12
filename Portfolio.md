@@ -7,32 +7,12 @@ redirect_from:
   - /SAR-2023-004-BH/
   - /SAR-2023-004/
 categories:
-  - case-control
-  - cross-sectional
   - longitudinal-studies
   - cohort
-  - clinical-trial
-  - ecological
   - epidemiology
-  - bioassay
-  - systematic-review
-  - technical-report
-  - data-product
 tags:
-  - prevalence
   - incidence
-  - diagnostic-models
   - prognostic-models
-  - imputation-models
-  - survival-analysis
-  - efficacy
-  - concordance-analysis
-  - survey
-  - meta-analysis
-  - decision-trees
-  - machine-learning
-  - unsupervised-learning
-  - data-instrument
 ---
 
 Objective
