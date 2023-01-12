@@ -1,16 +1,14 @@
-# [title]
+# Effect of social-economic of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
 
-Objective
+To determine the effect of social economic status of the neighborhood on mortality of patients with brain injury.
 
-Statistical Analysis for PERSON (PLACE, yyyy)
-<!-- Technical Report for PERSON (PLACE, yyyy) -->
+Statistical Analysis for Brennan Hickson (US, 2023)
+<!-- Technical Report for Brennan Hickson (US, 2023) -->
 
 ## Analyses performed
 
 1. Descriptive analysis
 1. Inferential analysis
-1. Power analysis
-1. Missing data imputation
 1. Statistical models
 
 ## Documents
