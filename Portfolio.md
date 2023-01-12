@@ -13,6 +13,7 @@ categories:
 tags:
   - incidence
   - prognostic-models
+  - survival-analysis
 ---
 
 Objective
