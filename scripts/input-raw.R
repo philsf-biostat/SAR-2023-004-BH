@@ -20,7 +20,9 @@ data.raw <- read_sav("dataset/Form1_20221017.sav") %>%
 
 data.raw %>%
   left_join(
-    read_excel("dataset/DCI.xlsx") %>% mutate(Zipcode = as.character(Zipcode)), by = c("ZipDis" = "Zipcode")
+    read_excel("dataset/DCI.xlsx") %>%
+      mutate(Zipcode = formatC(Zipcode, width = 5, flag = "0")), # fix zipcodes with leading zeroes
+    by = c("ZipDis" = "Zipcode")
   )
 Nvar_orig <- data.raw %>% ncol
 Nobs_orig <- data.raw %>% nrow
