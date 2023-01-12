@@ -1,4 +1,4 @@
-# [title]
+# Effect of social-economic of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
 
 To determine the effect of social economic status of the neighborhood on mortality of patients with brain injury.
 
