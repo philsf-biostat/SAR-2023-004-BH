@@ -23,7 +23,31 @@ Nobs_orig <- data.raw %>% nrow
 
 data.raw <- data.raw %>%
   select(
-    everything(),
+    Mod1id,
+    Injury,
+    RehabDis,
+    Birth,
+    SexF,
+    Race,
+    Mar,
+    ResDis,
+    ZipDis,
+    PriorSeiz,
+    SCI,
+    Cause,
+    AcutePay1,
+    RehabPay1,
+    AGE,
+    PROBLEMUse,
+    DAYStoREHABdc,
+    DRSd,
+    EDUCATION,
+    EMPLOYMENT,
+    FIMTOTD,
+    PTADays,
+    RURALdc,
+    IntStatus,
+    DeathF,
   ) %>%
   rename(
     id = Mod1id,
@@ -56,7 +80,7 @@ analytical <- data.raw %>%
     id,
     # exposure,
     # outcome,
-    # everything(),
+    everything(),
   )
 
 Nvar_final <- analytical %>% ncol
