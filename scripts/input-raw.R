@@ -17,8 +17,8 @@ data.raw <- read_sav("dataset/Form1_20221017.sav")
 data.raw <- data.raw %>%
   left_join(
     read_sav("dataset/Form2_20221017.sav"),
-    by = c("Mod1id", "EntryDate"),
-    suffix = c("Form1", "Form2"),
+    by = "Mod1id",
+    suffix = c("_Form1", "_Form2"),
   )
 
 # join Zipcodes table
