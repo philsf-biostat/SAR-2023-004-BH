@@ -155,10 +155,10 @@ All variables in the analytical set were labeled according to the raw data provi
 
 **Specification of outcome measures** (Zarin, 2011):
 
-1. (Domain)
-2. (Specific measurement)
-3. (Specific metric)
-4. (Method of aggregation)
+1. (Domain) Mortality
+2. (Specific measurement) Death
+3. (Specific metric) Time-to-event
+4. (Method of aggregation) Hazard ratio
 
 **Primary outcome**
 
