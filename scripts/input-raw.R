@@ -38,6 +38,8 @@ data.raw <- data.raw %>%
   rename(
   ) %>%
   mutate(
+    # convert haven_labelled to factor (missing value codes are used automatically)
+    across(where(is.labelled), as_factor),
   ) %>%
   filter(
   )

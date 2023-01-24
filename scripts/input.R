@@ -55,7 +55,6 @@ analytical <- data.raw %>%
   # select analytic variables
   select(
     id,
-    Mod1id,
     SES,
     Injury,
     RehabDis,
