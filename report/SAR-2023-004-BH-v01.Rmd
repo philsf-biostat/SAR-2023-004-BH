@@ -66,21 +66,21 @@ source("scripts/results.R", encoding = 'UTF-8')
 
 # Methods
 
-<!-- The data procedures, design and analysis methods used in this report are fully described in the annex document **SAP-2023-004-BH-v01**. -->
+The data procedures, design and analysis methods used in this report are fully described in the annex document **SAP-2023-004-BH-v01**.
 
-## Study parameters
+<!-- ## Study parameters -->
 
-### Study design
+<!-- ### Study design -->
 
-### Inclusion and exclusion criteria
+<!-- ### Inclusion and exclusion criteria -->
 
-### Exposures
+<!-- ### Exposures -->
 
-### Outcomes
+<!-- ### Outcomes -->
 
-### Covariates
+<!-- ### Covariates -->
 
-## Statistical analyses
+<!-- ## Statistical analyses -->
 
 This analysis was performed using statistical software `R` version `r getRversion()`.
 
