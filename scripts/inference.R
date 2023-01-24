@@ -34,6 +34,8 @@ tab_inf <- analytical %>%
   # # PT
   # modify_header(estimate ~ '**Diferença ajustada**') %>%
   # modify_footnote(update = c(estimate, ci, p.value) ~ "ANCOVA (ajustada por sexo, idade e IMC)") %>%
+  # bold_labels() %>%
+  modify_table_styling(columns = "label", align = "center") %>%
   # bold significant p values
   bold_p()
 
