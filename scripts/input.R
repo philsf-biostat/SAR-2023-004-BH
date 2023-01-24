@@ -24,6 +24,7 @@ Nobs_orig <- data.raw %>% nrow
 data.raw <- data.raw %>%
   select(
     Mod1id,
+    DCIDistressScore, #SES
     Injury,
     RehabDis,
     Birth,
@@ -51,6 +52,7 @@ data.raw <- data.raw %>%
   ) %>%
   rename(
     id = Mod1id,
+    SES = DCIDistressScore,
   ) %>%
   mutate(
   ) %>%
