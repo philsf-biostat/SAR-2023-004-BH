@@ -28,6 +28,23 @@ data.raw <- data.raw %>%
   filter(
   )
 
+# inclusion criteria: up to 10yr of follow up
+data.raw <- data.raw %>%
+  filter(
+    FollowUpPeriod <= 10,
+  )
+
+# exclusion criteria: redundant participant observations: pick last date of follow up
+data.raw <- data.raw %>%
+  group_by(Mod1id) %>%
+  filter(
+    FollowUpPeriod == max(FollowUpPeriod, na.rm = TRUE),
+  ) %>%
+  ungroup()
+
+# inclusion criteria: 10yr follow up + unique IDs
+Nobs_incl_id <- data.raw %>% nrow()
+
 # inclusion criteria: study period
 data.raw <- data.raw %>%
   filter(

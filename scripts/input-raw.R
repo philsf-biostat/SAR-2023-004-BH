@@ -125,6 +125,8 @@ data.raw <- data.raw %>%
     ZipF = if_else(is.na(ZipF), ZipDis, ZipF),
     # Fill Death dates from Form1
     DeathF = if_else(is.na(DeathF), Death, DeathF),
+    # keep FU as numeric, for later filtering
+    FollowUpPeriod = as.numeric(FollowUpPeriod),
   )
 
 # SES data ----------------------------------------------------------------
@@ -154,14 +156,6 @@ data.raw <- data.raw %>%
     # simplify dates
     across(where(is.POSIXt), as_date),
   )
-
-# exclusion criteria: redundant participant observations: pick last date of follow up
-data.raw <- data.raw %>%
-  group_by(Mod1id) %>%
-  filter(
-    FollowUpPeriod == max(FollowUpPeriod, na.rm = TRUE),
-    ) %>%
-  ungroup()
 
 # convert haven_labelled to factor (missing value codes are used automatically)
 data.raw <- data.raw %>%
