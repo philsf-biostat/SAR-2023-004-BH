@@ -73,9 +73,10 @@ na_date <- c("4444-04-04", "5555-05-05", "7777-07-07", "8888-08-08", "9999-09-09
 # save var labels before processing
 labs <- data.raw %>% var_label()
 
+# missing data treatment: explicit NA
 data.raw <- data.raw %>%
-  # replace NA in all Zipcodes
   replace_with_na(replace = list(
+   # replace NA in all Zipcodes
    ZipInj = na_zip,
    ZipDis = na_zip,
    ZipF = na_zip,

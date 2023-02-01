@@ -28,6 +28,12 @@ data.raw <- data.raw %>%
   filter(
   )
 
+# rename selecting vars
+demographics <- str_replace(demographics, "Mod1id", "id")
+demographics <- str_replace(demographics, "DCIDistressScore", "SES")
+clinical <- str_replace(clinical, "Mod1id", "id")
+clinical <- str_replace(clinical, "DCIDistressScore", "SES")
+
 # inclusion criteria: up to 10yr of follow up
 data.raw <- data.raw %>%
   filter(
@@ -36,7 +42,7 @@ data.raw <- data.raw %>%
 
 # exclusion criteria: redundant participant observations: pick last date of follow up
 data.raw <- data.raw %>%
-  group_by(Mod1id) %>%
+  group_by(id) %>%
   filter(
     FollowUpPeriod == max(FollowUpPeriod, na.rm = TRUE),
   ) %>%
@@ -92,36 +98,12 @@ analytical <- data.raw %>%
     Date,
     Status,
     Time,
-    Injury,
-    RehabDis,
-    Birth,
-    SexF,
-    Race,
-    Mar,
-    ResDis,
-    ZipDis,
-    PriorSeiz,
-    SCI,
-    Cause,
-    # AcutePay1,
-    RehabPay1,
-    AGE,
-    PROBLEMUse,
-    DAYStoREHABdc,
-    # DRSd,
-    EDUCATION,
-    EMPLOYMENT,
-    # FIMTOTD,
-    # PTADays,
-    FIMMOTD,
-    FIMCOGD,
-    RURALdc,
-    FollowUpPeriod,
-    IntStatus,
-    DeathF,
-    Followup,
+    everything(),
     -starts_with("Zip"),
-    # -where(is.Date),
+    -starts_with("DCI"),
+    -where(is.Date),
+    -IntStatus,
+    -FollowUpPeriod,
   )
 
 Nvar_final <- analytical %>% ncol
