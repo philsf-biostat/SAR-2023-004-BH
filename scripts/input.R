@@ -21,7 +21,7 @@ data.raw <- data.raw %>%
   ) %>%
   rename(
     id = Mod1id,
-    SES = DCIDistressScore,
+    exposure = DCIDistressScore,
   ) %>%
   mutate(
   ) %>%
@@ -69,7 +69,7 @@ data.raw <- data.raw %>%
     # create new Date with either DeathF OR Followup - prioritize Deaths over Followup when both are present
     Date = if_else(is.na(DeathF), Followup, DeathF),
     # status at followup Date
-    Status = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
+    outcome = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
     # time to event (in days)
     Time = as.duration(interval(RehabDis, Date)),
     # age at time of injury
@@ -80,12 +80,11 @@ data.raw <- data.raw %>%
 
 data.raw <- data.raw %>%
   set_variable_labels(
-    # exposure = "Study exposure",
-    # outcome = "Study outcome",
+    exposure = "SES",
+    outcome = "Status at last follow up",
     AGE = "Age at injury",
-    # Time = "Time of follow up",
-    # Date = "Date of last follow up",
-    # Status = "Status at last follow up",
+    Time = "Time of follow up",
+    Date = "Date of last follow up",
   )
 
 # analytical dataset ------------------------------------------------------
@@ -94,9 +93,9 @@ analytical <- data.raw %>%
   # select analytic variables
   select(
     id,
-    SES,
+    exposure,
+    outcome,
     Date,
-    Status,
     Time,
     everything(),
     -starts_with("Zip"),
