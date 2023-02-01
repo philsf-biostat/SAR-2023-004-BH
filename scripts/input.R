@@ -5,7 +5,7 @@ library(tidyverse)
 library(readxl)
 # library(haven)
 # library(foreign)
-# library(lubridate)
+library(lubridate)
 # library(naniar)
 library(labelled)
 
@@ -49,6 +49,8 @@ data.raw <- data.raw %>%
     Status = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
     # time to event (in days)
     Time = as.duration(interval(RehabDis, Date)),
+    # age at time of injury
+    AGE = floor(as.duration(interval(Birth, Injury))/dyears(1)),
   )
 
 # labels ------------------------------------------------------------------
@@ -57,6 +59,10 @@ data.raw <- data.raw %>%
   set_variable_labels(
     # exposure = "Study exposure",
     # outcome = "Study outcome",
+    AGE = "Age at injury",
+    # Time = "Time of follow up",
+    # Date = "Date of last follow up",
+    # Status = "Status at last follow up",
   )
 
 # analytical dataset ------------------------------------------------------
@@ -66,6 +72,9 @@ analytical <- data.raw %>%
   select(
     id,
     SES,
+    Date,
+    Status,
+    Time,
     Injury,
     RehabDis,
     Birth,
@@ -92,6 +101,8 @@ analytical <- data.raw %>%
     IntStatus,
     DeathF,
     Followup,
+    -starts_with("Zip"),
+    # -where(is.Date),
   )
 
 Nvar_final <- analytical %>% ncol
