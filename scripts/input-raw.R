@@ -81,6 +81,7 @@ data.raw <- data.raw %>%
    ZipDis = na_zip,
    ZipF = na_zip,
    # replace NA in all Dates
+   Birth = na_date,
    Death = na_date,
    DeathF = na_date,
    Followup = na_date,

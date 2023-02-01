@@ -73,7 +73,7 @@ data.raw <- data.raw %>%
     # time to event (in days)
     Time = as.duration(interval(RehabDis, Date)),
     # age at time of injury
-    AGE = floor(as.duration(interval(Birth, Injury))/dyears(1)),
+    AGE = if_else(is.na(AGE), floor(as.duration(interval(Birth, Injury))/dyears(1)), AGE),
   )
 
 # labels ------------------------------------------------------------------
