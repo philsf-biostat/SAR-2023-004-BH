@@ -2,7 +2,7 @@
 library(philsfmisc)
 # library(data.table)
 library(tidyverse)
-library(readxl)
+# library(readxl)
 # library(haven)
 # library(foreign)
 library(lubridate)
@@ -86,16 +86,18 @@ analytical <- data.raw %>%
     PriorSeiz,
     SCI,
     Cause,
-    AcutePay1,
+    # AcutePay1,
     RehabPay1,
     AGE,
     PROBLEMUse,
     DAYStoREHABdc,
-    DRSd,
+    # DRSd,
     EDUCATION,
     EMPLOYMENT,
-    FIMTOTD,
-    PTADays,
+    # FIMTOTD,
+    # PTADays,
+    FIMMOTD,
+    FIMCOGD,
     RURALdc,
     FollowUpPeriod,
     IntStatus,
