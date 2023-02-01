@@ -172,6 +172,10 @@ data.raw <- data.raw %>%
     across(starts_with("Zip"), as.character),
   )
 
+# clear unused factor levels
+data.raw <- data.raw %>%
+  droplevels()
+
 # restore original labels - intersect is used to get only valid colnames
 var_label(data.raw) <- labs[intersect(colnames(data.raw), names(labs))]
 
