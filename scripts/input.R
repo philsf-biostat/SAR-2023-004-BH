@@ -28,11 +28,27 @@ data.raw <- data.raw %>%
   filter(
   )
 
+# inclusion criteria: study period
+data.raw <- data.raw %>%
+  filter(
+    between(RehabDis, as.Date("2010-01-01"), as.Date("2018-12-31")), # discharge date
+    # Followup <= as.Date("2019-12-31"), # follow up date
+  )
+
+# inclusion criteria: study period
+Nobs_incl_per <- data.raw %>% nrow()
+
 # data wrangling ----------------------------------------------------------
 
 data.raw <- data.raw %>%
   mutate(
     id = as.character(id), # or as.factor
+    # create new Date with either DeathF OR Followup - prioritize Deaths over Followup when both are present
+    Date = if_else(is.na(DeathF), Followup, DeathF),
+    # status at followup Date
+    Status = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
+    # time to event (in days)
+    Time = as.duration(interval(RehabDis, Date)),
   )
 
 # labels ------------------------------------------------------------------

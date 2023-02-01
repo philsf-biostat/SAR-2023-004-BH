@@ -145,15 +145,6 @@ data.raw <- data.raw %>%
     all_of(clinical),
   ) %>%
   mutate(
-    # create new Date with either DeathF OR Followup - prioritize Deaths over Followup when both are present
-    Date = if_else(is.na(DeathF), Followup, DeathF),
-
-    # status at followup Date
-    Status = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
-
-    # time to event (in days)
-    Time = as.duration(interval(RehabDis, Date)),
-
     # convert DCI values back to numeric
     across(starts_with("DCI"), as.numeric),
     # simplify dates
@@ -168,23 +159,17 @@ data.raw <- data.raw %>%
     ) %>%
   ungroup()
 
-# inclusion criteria: study period
-data.raw <- data.raw %>%
-  filter(
-    between(RehabDis, as.Date("2010-01-01"), as.Date("2018-12-31")), # discharge date
-    # Followup <= as.Date("2019-12-31"), # follow up date
-  )
-
 # convert haven_labelled to factor (missing value codes are used automatically)
 data.raw <- data.raw %>%
   mutate(
     across(where(is.labelled), as_factor),
   )
 
-# convert back the numeric variables
+# convert back (from factor) the variable types
 data.raw <- data.raw %>%
   mutate(
     across(all_of(num_vars), as.numeric),
+    across(starts_with("Zip"), as.character),
   )
 
 # restore original labels - intersect is used to get only valid colnames
