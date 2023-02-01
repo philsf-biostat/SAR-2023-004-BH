@@ -73,13 +73,15 @@ na_date <- c("4444-04-04", "5555-05-05", "7777-07-07", "8888-08-08", "9999-09-09
 # save var labels before processing
 labs <- data.raw %>% var_label()
 
+# missing data treatment: explicit NA
 data.raw <- data.raw %>%
-  # replace NA in all Zipcodes
   replace_with_na(replace = list(
+   # replace NA in all Zipcodes
    ZipInj = na_zip,
    ZipDis = na_zip,
    ZipF = na_zip,
    # replace NA in all Dates
+   Birth = na_date,
    Death = na_date,
    DeathF = na_date,
    Followup = na_date,
@@ -125,6 +127,8 @@ data.raw <- data.raw %>%
     ZipF = if_else(is.na(ZipF), ZipDis, ZipF),
     # Fill Death dates from Form1
     DeathF = if_else(is.na(DeathF), Death, DeathF),
+    # keep FU as numeric, for later filtering
+    FollowUpPeriod = as.numeric(FollowUpPeriod),
   )
 
 # SES data ----------------------------------------------------------------
@@ -155,14 +159,6 @@ data.raw <- data.raw %>%
     across(where(is.POSIXt), as_date),
   )
 
-# exclusion criteria: redundant participant observations: pick last date of follow up
-data.raw <- data.raw %>%
-  group_by(Mod1id) %>%
-  filter(
-    FollowUpPeriod == max(FollowUpPeriod, na.rm = TRUE),
-    ) %>%
-  ungroup()
-
 # convert haven_labelled to factor (missing value codes are used automatically)
 data.raw <- data.raw %>%
   mutate(
@@ -175,6 +171,10 @@ data.raw <- data.raw %>%
     across(all_of(num_vars), as.numeric),
     across(starts_with("Zip"), as.character),
   )
+
+# clear unused factor levels
+data.raw <- data.raw %>%
+  droplevels()
 
 # restore original labels - intersect is used to get only valid colnames
 var_label(data.raw) <- labs[intersect(colnames(data.raw), names(labs))]

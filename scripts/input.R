@@ -21,12 +21,35 @@ data.raw <- data.raw %>%
   ) %>%
   rename(
     id = Mod1id,
-    SES = DCIDistressScore,
+    exposure = DCIDistressScore,
   ) %>%
   mutate(
   ) %>%
   filter(
   )
+
+# rename selecting vars
+demographics <- str_replace(demographics, "Mod1id", "id")
+demographics <- str_replace(demographics, "DCIDistressScore", "SES")
+clinical <- str_replace(clinical, "Mod1id", "id")
+clinical <- str_replace(clinical, "DCIDistressScore", "SES")
+
+# inclusion criteria: up to 10yr of follow up
+data.raw <- data.raw %>%
+  filter(
+    FollowUpPeriod <= 10,
+  )
+
+# exclusion criteria: redundant participant observations: pick last date of follow up
+data.raw <- data.raw %>%
+  group_by(id) %>%
+  filter(
+    FollowUpPeriod == max(FollowUpPeriod, na.rm = TRUE),
+  ) %>%
+  ungroup()
+
+# inclusion criteria: 10yr follow up + unique IDs
+Nobs_incl_id <- data.raw %>% nrow()
 
 # inclusion criteria: study period
 data.raw <- data.raw %>%
@@ -46,23 +69,56 @@ data.raw <- data.raw %>%
     # create new Date with either DeathF OR Followup - prioritize Deaths over Followup when both are present
     Date = if_else(is.na(DeathF), Followup, DeathF),
     # status at followup Date
-    Status = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
+    outcome = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
     # time to event (in days)
     Time = as.duration(interval(RehabDis, Date)),
     # age at time of injury
-    AGE = floor(as.duration(interval(Birth, Injury))/dyears(1)),
+    AGE = if_else(is.na(AGE), floor(as.duration(interval(Birth, Injury))/dyears(1)), AGE),
+    # reduce number of categories
+    Race = fct_collapse(Race,
+                        White = "White",
+                        Black = "Black",
+                        Hispanic = "Hispanic Origin",
+                        other_level = "Other",
+                        ),
+    EDUCATION = fct_collapse(EDUCATION,
+                             "Less Than High School" = c("8th Grade or Less", "9th - 11th Grade"),
+                             "High School/GED" = c("GED", "HS", "HS/GED", "777"),
+                             # "21" is presumed to be "Trade"
+                             "Greater Than High School" = c("Trade", "21", "Some College", "Associate", "Bachelors", "Masters", "Doctorate"),
+                             # other_level = "Other",
+                             ),
+    EMPLOYMENT = fct_collapse(EMPLOYMENT,
+                              Employed = "Employed",
+                              Unemployed = "Unemployed",
+                              other_level = "Other",
+                              ),
+    RehabPay1 = fct_collapse(RehabPay1,
+                             "Private Insurance" = c("Private Insurance", "Workers Compensation", "Auto Insurance"),
+                             "Public Insurance" = c("Medicaid", "Medicare", "State or County"),
+                             other_level = "Other",
+                             ),
+    ResDis = fct_collapse(ResDis,
+                          "Private Residence" = "Private Residence",
+                          other_level = "Other",
+                          ),
+    Cause = fct_collapse(Cause,
+                         Vehicular = c("Motor Vehicle", "Motorcycle", "Bicycle", "All-Terrain Vehicle (ATV) and All-Terrain Cycle (ATC)", "Other Vehicular: Unclassified"),
+                         Falls = "Fall",
+                         Violence = c("Gunshot Wound", "Assaults With Blunt Instrument", "Other Violence"),
+                         other_level = "Other",
+                         ),
   )
 
 # labels ------------------------------------------------------------------
 
 data.raw <- data.raw %>%
   set_variable_labels(
-    # exposure = "Study exposure",
-    # outcome = "Study outcome",
+    exposure = "SES",
+    outcome = "Mortality",
     AGE = "Age at injury",
-    # Time = "Time of follow up",
-    # Date = "Date of last follow up",
-    # Status = "Status at last follow up",
+    Time = "Time of follow up",
+    Date = "Date of last follow up",
   )
 
 # analytical dataset ------------------------------------------------------
@@ -71,40 +127,16 @@ analytical <- data.raw %>%
   # select analytic variables
   select(
     id,
-    SES,
+    exposure,
+    outcome,
     Date,
-    Status,
     Time,
-    Injury,
-    RehabDis,
-    Birth,
-    SexF,
-    Race,
-    Mar,
-    ResDis,
-    ZipDis,
-    PriorSeiz,
-    SCI,
-    Cause,
-    # AcutePay1,
-    RehabPay1,
-    AGE,
-    PROBLEMUse,
-    DAYStoREHABdc,
-    # DRSd,
-    EDUCATION,
-    EMPLOYMENT,
-    # FIMTOTD,
-    # PTADays,
-    FIMMOTD,
-    FIMCOGD,
-    RURALdc,
-    FollowUpPeriod,
-    IntStatus,
-    DeathF,
-    Followup,
+    everything(),
     -starts_with("Zip"),
-    # -where(is.Date),
+    -starts_with("DCI"),
+    -where(is.Date),
+    -IntStatus,
+    -FollowUpPeriod,
   )
 
 Nvar_final <- analytical %>% ncol
