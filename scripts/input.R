@@ -115,7 +115,7 @@ data.raw <- data.raw %>%
 data.raw <- data.raw %>%
   set_variable_labels(
     exposure = "SES",
-    outcome = "Status at last follow up",
+    outcome = "Mortality",
     AGE = "Age at injury",
     Time = "Time of follow up",
     Date = "Date of last follow up",
