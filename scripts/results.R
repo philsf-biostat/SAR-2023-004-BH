@@ -1,5 +1,5 @@
 # setup -------------------------------------------------------------------
-# suppressMessages(library(dplyr))
+# system.time(source("scripts/input-raw.R")) # run only once (~9 min)
 
 # results -----------------------------------------------------------------
 source('scripts/input.R', encoding = 'UTF-8') |> suppressMessages()

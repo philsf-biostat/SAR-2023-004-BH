@@ -5,19 +5,13 @@ library(tidyverse)
 library(readxl)
 # library(haven)
 # library(foreign)
-# library(lubridate)
+library(lubridate)
 # library(naniar)
 library(labelled)
 
 # data loading ------------------------------------------------------------
 set.seed(42)
-# data.raw <- tibble(id=gl(2, 10), exposure = gl(2, 10), outcome = rnorm(20))
-# data.raw <- read_excel("dataset/file.xlsx") %>%
-#   janitor::clean_names()
-data.raw <- read_rds("dataset/brennan_data.rds")
-
-Nvar_orig <- data.raw %>% ncol
-Nobs_orig <- data.raw %>% nrow
+load(file = "dataset/brennan_data.rds")
 
 # data cleaning -----------------------------------------------------------
 
@@ -34,11 +28,29 @@ data.raw <- data.raw %>%
   filter(
   )
 
+# inclusion criteria: study period
+data.raw <- data.raw %>%
+  filter(
+    between(RehabDis, as.Date("2010-01-01"), as.Date("2018-12-31")), # discharge date
+    # Followup <= as.Date("2019-12-31"), # follow up date
+  )
+
+# inclusion criteria: study period
+Nobs_incl_per <- data.raw %>% nrow()
+
 # data wrangling ----------------------------------------------------------
 
 data.raw <- data.raw %>%
   mutate(
     id = as.character(id), # or as.factor
+    # create new Date with either DeathF OR Followup - prioritize Deaths over Followup when both are present
+    Date = if_else(is.na(DeathF), Followup, DeathF),
+    # status at followup Date
+    Status = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
+    # time to event (in days)
+    Time = as.duration(interval(RehabDis, Date)),
+    # age at time of injury
+    AGE = floor(as.duration(interval(Birth, Injury))/dyears(1)),
   )
 
 # labels ------------------------------------------------------------------
@@ -47,6 +59,10 @@ data.raw <- data.raw %>%
   set_variable_labels(
     # exposure = "Study exposure",
     # outcome = "Study outcome",
+    AGE = "Age at injury",
+    # Time = "Time of follow up",
+    # Date = "Date of last follow up",
+    # Status = "Status at last follow up",
   )
 
 # analytical dataset ------------------------------------------------------
@@ -56,6 +72,9 @@ analytical <- data.raw %>%
   select(
     id,
     SES,
+    Date,
+    Status,
+    Time,
     Injury,
     RehabDis,
     Birth,
@@ -78,8 +97,12 @@ analytical <- data.raw %>%
     FIMTOTD,
     PTADays,
     RURALdc,
+    FollowUpPeriod,
     IntStatus,
     DeathF,
+    Followup,
+    -starts_with("Zip"),
+    # -where(is.Date),
   )
 
 Nvar_final <- analytical %>% ncol
