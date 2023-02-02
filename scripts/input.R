@@ -24,7 +24,7 @@ data.raw <- data.raw %>%
   ) %>%
   rename(
     id = Mod1id,
-    exposure = DCIDistressScore,
+    exposure = DCIQuintile,
   ) %>%
   mutate(
   ) %>%
@@ -33,9 +33,9 @@ data.raw <- data.raw %>%
 
 # rename selecting vars
 demographics <- str_replace(demographics, "Mod1id", "id")
-demographics <- str_replace(demographics, "DCIDistressScore", "SES")
+demographics <- str_replace(demographics, "DCIQuintile", "SES")
 clinical <- str_replace(clinical, "Mod1id", "id")
-clinical <- str_replace(clinical, "DCIDistressScore", "SES")
+clinical <- str_replace(clinical, "DCIQuintile", "SES")
 
 # inclusion criteria: up to 10yr of follow up
 data.raw <- data.raw %>%
@@ -75,6 +75,8 @@ data.raw <- data.raw %>%
     outcome = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
     # time to event (in days)
     Time = as.duration(interval(RehabDis, Date)),
+    # label SES quintiles
+    exposure = factor(exposure, labels = c("Prosperous", "Comfortable", "Mid-Tier", "At-Risk", "Distressed")),
     # age at time of injury
     AGE = if_else(is.na(AGE), floor(as.duration(interval(Birth, Injury))/dyears(1)), AGE),
     # reduce number of categories
@@ -117,7 +119,7 @@ data.raw <- data.raw %>%
 
 data.raw <- data.raw %>%
   set_variable_labels(
-    exposure = "SES",
+    exposure = "SES quintiles",
     outcome = "Mortality",
     AGE = "Age at injury",
     Time = "Time of follow up",
