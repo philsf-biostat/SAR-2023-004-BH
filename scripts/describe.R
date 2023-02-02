@@ -34,5 +34,5 @@ tab_desc <- analytical %>%
   ) %>%
   # modify_caption(caption = "**Tabela 1** Características demográficas") %>%
   # modify_header(label ~ "**Características dos pacientes**") %>%
-  # bold_labels() %>%
+  bold_labels() %>%
   modify_table_styling(columns = "label", align = "center")
