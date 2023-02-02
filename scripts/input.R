@@ -9,6 +9,9 @@ library(lubridate)
 # library(naniar)
 library(labelled)
 
+study_period <- c("2010-01-01", "2018-12-31") %>%
+  as.Date()
+
 # data loading ------------------------------------------------------------
 set.seed(42)
 load(file = "dataset/brennan_data.rds")
@@ -54,7 +57,7 @@ Nobs_incl_id <- data.raw %>% nrow()
 # inclusion criteria: study period
 data.raw <- data.raw %>%
   filter(
-    between(RehabDis, as.Date("2010-01-01"), as.Date("2018-12-31")), # discharge date
+    between(RehabDis, study_period[1], study_period[2]), # discharge date
     # Followup <= as.Date("2019-12-31"), # follow up date
   )
 
