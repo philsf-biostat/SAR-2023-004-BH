@@ -113,6 +113,11 @@ data.raw <- data.raw %>%
                          Violence = c("Gunshot Wound", "Assaults With Blunt Instrument", "Other Violence"),
                          other_level = "Other",
                          ),
+    # relevel variables
+    SexF = fct_relevel(SexF, "Male"),
+    RehabPay1 = fct_relevel(RehabPay1, "Private Insurance"),
+    EDUCATION = fct_relevel(EDUCATION, "Greater Than High School"),
+    RURALdc = fct_relevel(RURALdc, "Suburban"),
   )
 
 # labels ------------------------------------------------------------------
