@@ -126,6 +126,15 @@ tab_inf %>%
 # knitr::include_graphics("../figures/distr_age.png", error = FALSE)
 ```
 
+## Modeling strategy
+
+```{r tab_app}
+tab_app %>%
+  as_kable(
+    caption = "**Table A1** caption"
+  )
+```
+
 ## Availability
 
 All documents from this consultation were included in the consultant's Portfolio.
@@ -143,11 +152,11 @@ The portfolio is available at:
 
 ## Analytical dataset
 
-Table A1 shows the structure of the analytical dataset.
+Table A2 shows the structure of the analytical dataset.
 
 ```{r data}
 analytical_mockup %>%
-  pander(caption = "**Table A1** Analytical dataset structure")
+  pander(caption = "**Table A2** Analytical dataset structure")
 ```
 
 Due to confidentiality the data-set used in this analysis cannot be shared online in the public version of this report.
