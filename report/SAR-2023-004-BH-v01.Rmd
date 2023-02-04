@@ -62,7 +62,7 @@ source("scripts/results.R", encoding = 'UTF-8')
 
 ## Objectives
 
-## Data reception and cleaning
+<!-- ## Data reception and cleaning -->
 
 # Methods
 
@@ -100,7 +100,7 @@ tab_desc %>%
 # knitr::include_graphics("../figures/outcome.png", error = FALSE)
 ```
 
-## Inferential analysis
+## Effect of SES on mortality
 
 ```{r tab_inf}
 tab_inf %>%
