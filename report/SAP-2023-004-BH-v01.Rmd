@@ -58,16 +58,10 @@ source("scripts/input.R", encoding = 'UTF-8')
 
 # Abbreviations
 
-- BMI: body mass index
-- CI: confidence interval
-- CV: coefficient of variation
-- d: Cohen's D effect size
+- FIM: Functional Independence Measure
 - HR: hazards ratio
-- IQR: interquartile range
-- IRR: incidence rate ratio
-- OR: odds ratio
-- RR: risks ratio
 - SD: standard deviation
+- SES: socioeconomic status
 
 # Context
 
@@ -174,7 +168,7 @@ All variables in the analytical set were labeled according to the raw data provi
 
 The epidemiological profile of the study participants will be described.
 Demographic
-(sex, age and BMI)
+<!-- (sex, age and BMI) -->
 and clinical variables
 <!-- ( [vars] ) -->
 will be described as
@@ -185,20 +179,25 @@ The distributions of participants' characteristics will be summarized in tables 
 
 ### Inferential analyses
 
-All comparisons between groups will be performed as univariate analyses.
-Continuous variables will be compared between groups with the
-independent t test with Welch correction.
+<!-- All comparisons between groups will be performed as univariate analyses. -->
+<!-- Continuous variables will be compared between groups with the -->
+<!-- independent t test with Welch correction. -->
 <!-- paired t test. -->
 <!-- Mann-Whitney test. -->
 <!-- signed rank Wilcoxon test. -->
-Differences in distribution of categorical variables will be assessed with the
-Fisher exact test.
+<!-- Differences in distribution of categorical variables will be assessed with the -->
+<!-- Fisher exact test. -->
 <!-- chi-square test. -->
 <!-- McNemar test. -->
 
-<!-- All inferential analyses will be performed in the statistical models (described in the next section). -->
+All inferential analyses will be performed in the statistical models (described in the next section).
 
 ### Statistical modeling
+
+The hazard of mortality will be assessed with multivariate Cox regresion models.
+In order to assess if there is an effect of the SES of the neighborhood to which the participant was discharged on mortality will be assessed with three models.
+A crude estimate of the HR between each SES quintiles and mortality will be calculated as the basis of interpretation of the effect.
+The best estimate of the true effect will be calculated adjusting for all covariates described in section 4.5.
 
 ### Missing data
 
