@@ -71,6 +71,8 @@ To determine the effect of socioeconomic status of the neighborhood on mortality
 
 ## Hypotheses
 
+The neighborhood to which an individual is discharged from acute care affects the mortality rates of individuals that suffered a brain injury.
+
 # Data
 
 ## Raw data
@@ -143,9 +145,13 @@ All variables in the analytical set were labeled according to the raw data provi
 
 ## Study design
 
+Retrospective cohort.
+
 ## Inclusion and exclusion criteria
 
 ## Exposures
+
+SES.
 
 ## Outcomes
 
@@ -158,7 +164,24 @@ All variables in the analytical set were labeled according to the raw data provi
 
 **Primary outcome**
 
+Death after a brain injury.
+
 ## Covariates
+
+- Sex
+- Race
+- Age at injury
+- Substance Problem Use
+- Education
+- Employment status
+- Rural area
+- Spinal cord injury
+- Cause of injury
+- Primary rehabilitation payor
+- Residence after rehab discharge
+- Days From Injury to Rehab Discharge
+- FIM Motor at Discharge
+- FIM Cognitive at Discharge
 
 # Statistical methods
 
