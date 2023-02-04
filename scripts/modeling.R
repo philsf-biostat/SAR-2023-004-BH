@@ -7,6 +7,7 @@ library(broom)
 # library(mice)
 library(survival)
 
+# model data
 md <- analytical %>%
   select(-id, -PriorSeiz, -Mar,) %>%
   drop_na()
@@ -18,13 +19,15 @@ mod.crude <- coxph(Surv(Time/dyears(1), outcome) ~ exposure, md)
 # adjusted ----------------------------------------------------------------
 
 mod.full <- coxph(Surv(Time/dyears(1), outcome) ~ exposure + ., md)
+mod.late <- coxph(Surv(Time/dyears(1), outcome) ~ exposure + ., filter(md, Time > dyears(1)))
 
 # tab_inf <- tbl_merge(
 #   tbls = list(
 #     mod.crude %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p(), # crude HR
-#     mod.full %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p() # aHR
+#     mod.full %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p(), # aHR
+#     mod.late %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p() # Late deaths
 #     ),
-#   tab_spanner = c("Crude estimate", "Adjusted estimate")
+#   tab_spanner = c("Crude estimate", "Adjusted estimate", "Late deaths")
 #   )
 # 
 # write_rds(tab_inf, "dataset/tab_inf.rds")

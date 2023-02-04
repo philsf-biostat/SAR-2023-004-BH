@@ -1,5 +1,5 @@
 # setup -------------------------------------------------------------------
-# library(survminer)
+library(survminer)
 
 ff.col <- "steelblue" # good for single groups scale fill/color brewer
 ff.pal <- "Paired"    # good for binary groups scale fill/color brewer
@@ -17,6 +17,8 @@ gg.outcome <- gg +
   # geom_bar(aes(outcome, fill = exposure)) +
   xlab(attr(analytical$outcome, "label")) +
   ylab("")
+
+ggcoxzph(cox.zph(mod.full))
 
 # cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
 # gg +
