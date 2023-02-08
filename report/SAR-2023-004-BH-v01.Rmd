@@ -97,7 +97,7 @@ tab_desc %>%
 
 ```{r fig1, fig.cap="**Figure 1** caption"}
 # ![Age](../figures/outcome.png)
-# knitr::include_graphics("../figures/outcome.png", error = FALSE)
+knitr::include_graphics("../figures/outcome.png", error = FALSE)
 ```
 
 ## Effect of SES on mortality
@@ -107,6 +107,11 @@ tab_inf %>%
   as_kable(
     caption = "**Table 2** caption"
   )
+```
+
+```{r fig2, fig.cap="**Figure 2** caption"}
+# ![Age](../figures/outcome.png)
+knitr::include_graphics("../figures/surv.png", error = FALSE)
 ```
 
 # Observations and Limitations
@@ -123,7 +128,17 @@ tab_inf %>%
 
 ```{r A1, fig.cap="**Figure A1** Distribution of age in the study population."}
 # ![Age](../figures/distr_age.png)
-# knitr::include_graphics("../figures/distr_age.png", error = FALSE)
+knitr::include_graphics("../figures/distr_age.png", error = FALSE)
+```
+
+```{r A2, fig.cap="**Figure A2** Distribution of SES in the study population."}
+# ![Age](../figures/distr_age.png)
+knitr::include_graphics("../figures/distr_ses.png", error = FALSE)
+```
+
+```{r A3, fig.cap="**Figure A3** Alternative version of figure 2."}
+# ![Age](../figures/distr_age.png)
+knitr::include_graphics("../figures/surv_uncrop.png", error = FALSE)
 ```
 
 ## Modeling strategy
