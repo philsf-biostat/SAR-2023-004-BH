@@ -1,6 +1,6 @@
 # setup -------------------------------------------------------------------
-height <- 12
-width <- 12
+height <- 14
+width <- 14
 units <- "cm"
 
 # publication ready tables ------------------------------------------------
@@ -13,4 +13,5 @@ units <- "cm"
 
 # save plots --------------------------------------------------------------
 
-ggsave(filename = "figures/outcome.png", plot = gg.outcome, height = height, width = width, units = units)
+ggsave(filename = "figures/surv_uncrop.png", plot = gg.surv.uncrop, height = height, width = width, units = units)
+ggsave(filename = "figures/surv.png", plot = gg.surv, height = height, width = width, units = units)
