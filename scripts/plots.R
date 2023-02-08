@@ -5,6 +5,7 @@ ff.col <- "steelblue" # good for single groups scale fill/color brewer
 ff.pal <- "Paired"    # good for binary groups scale fill/color brewer
 
 gg <- analytical %>%
+  drop_na(exposure) %>%
   ggplot() +
   scale_color_brewer(palette = ff.pal) +
   scale_fill_brewer(palette = ff.pal) +
@@ -12,11 +13,38 @@ gg <- analytical %>%
 
 # plots -------------------------------------------------------------------
 
-# gg.outcome <- gg +
-#   geom_density(aes(outcome, fill = exposure), alpha = .8) +
-#   # geom_bar(aes(outcome, fill = exposure)) +
-#   xlab(attr(analytical$outcome, "label")) +
-#   ylab("")
+gg.outcome <- gg +
+  geom_bar(
+    data = drop_na(analytical, exposure),
+    aes(exposure,
+        fill = factor(outcome, labels = c("Survived", "Death"))),
+    position = "fill") +
+  scale_y_continuous(labels = scales::label_percent()) +
+  xlab(attr(analytical$exposure, "label")) +
+  ylab("Mortality") +
+  labs(fill = "")
+
+gg.age <- gg +
+  geom_density(
+    data = drop_na(analytical, SexF),
+    aes(AGE, fill = SexF),
+    alpha = .9) +
+  xlab(attr(analytical$AGE, "label")) +
+  ylab("Distribution density") +
+  labs(fill = "")
+
+gg.ses <- gg +
+  geom_bar(
+    data = drop_na(analytical, SexF, exposure),
+    aes(exposure,
+        fill = SexF),
+    position = "fill") +
+  scale_y_continuous(labels = scales::label_percent()) +
+  xlab(attr(analytical$exposure, "label")) +
+  ylab("") +
+  labs(fill = "")
+
+# survival curves ---------------------------------------------------------
 
 cxsf <- survfit(mod.full, newdata = newdat, conf.type = "none")
 surv_cxsf <- surv_summary(cxsf, data = analytical) %>% tibble()
