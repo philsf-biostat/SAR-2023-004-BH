@@ -1,13 +1,5 @@
 
-
-moved <- data.raw %>%
-  transmute(
-    id,
-    FollowUpPeriod,
-    across(starts_with("Zip"), as.character),
-    Moved_Dis = ZipF != ZipDis,
-    Moved_Inj = ZipF != ZipInj,
-    )
+# Requirement: disable the "unique ID" in input.R BEFORE running this script, otherwise it won't work properly
 
 moved <- data.raw %>%
   select(
@@ -33,18 +25,3 @@ moved <- data.raw %>%
 moved
 
 write_csv(moved, "dataset/moved.csv")
-
-# moved between injury and followup
-moved %>%
-  filter(Moved_Inj == TRUE) %>%
-  group_by(FollowUpPeriod) %>%
-  count(Moved_Inj) %>%
-  ungroup()
-
-# moved between discharge and followup
-moved %>%
-  filter(Moved_Dis == TRUE) %>%
-  group_by(FollowUpPeriod) %>%
-  count(Moved_Dis) %>%
-  ungroup()
-
