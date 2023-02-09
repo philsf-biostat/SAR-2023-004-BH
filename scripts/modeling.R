@@ -53,3 +53,25 @@ tab_inf <- read_rds("dataset/tab_inf.rds")
 # write_rds(tab_app, "dataset/tab_app.rds")
 
 tab_app <- read_rds("dataset/tab_app.rds")
+
+# predictions & curves ----------------------------------------------------
+
+newdat <- expand.grid(
+  exposure = levels(md$exposure),
+  SexF = levels(md$SexF),
+  # SexF = "Male",
+  Race = "White",
+  AGE = 31,
+  PROBLEMUse = "No",
+  EDUCATION = "Greater Than High School",
+  EMPLOYMENT = "Employed",
+  RURALdc = "Urban",
+  SCI = "No",
+  Cause = "Vehicular",
+  RehabPay1 = "Private Insurance",
+  ResDis = "Private Residence",
+  DAYStoREHABdc = 42,
+  FIMMOTD = 53,
+  FIMCOGD = 20
+  )
+rownames(newdat) <- letters[1:10]
