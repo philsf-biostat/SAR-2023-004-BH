@@ -138,6 +138,9 @@ After controlling for all relevant covariates, this effect can no longer be cons
 The point estimates for all adjusted estimates of SES effect range from 0.99 to 1.12, relative to the prosperous neighborhood, and that represents a narrower range of point estimates than the crude estimates (from 1.08 to 1.28).
 
 When considering only late deaths the SES effect is also not significantly associated with mortality, and estimates relative to a prosperous neighborhood range from 1.00 to 1.07 (which is an even narrower range than the crude estimates).
+The adjusted estimates of all-time mortality can be compared with late mortality where in all neighborhoods the CI of the adjusted estimate is contained within the late deaths' CIs, except for mid-tier and distressed neighborhoods that exceed the respective upper ranges of confidence.
+The respective point estimates in all cases do not change by a large amount, where most differences fall under 0.1 HR.
+It can be concluded that effect of SES on the risk of late death is not substantially different from all-time death in the study population, after controlling for all covariates.
 
 ```{r tab_inf}
 tab_inf %>%
