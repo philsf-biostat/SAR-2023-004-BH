@@ -158,6 +158,9 @@ Retrospective cohort.
 
 ## Inclusion and exclusion criteria
 
+- Participants with at most 10 years of follow up;
+- Participants included in the cohort between `r study_period[1]` and `r study_period[2]`.
+
 ## Exposures
 
 SES.
