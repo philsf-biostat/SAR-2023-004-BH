@@ -179,6 +179,13 @@ All observational studies are recommended to be reported following the STROBE gu
 
 # Conclusions
 
+The epidemiological profile of the study participant is an 31 years old white male, that has greater than high school level of education, is actively employed and lives in an urban setting.
+
+There appears to be a crude effect of SES on mortality, where participants that were discharged to either a comfortable or a distressed neighborhood had increased risk of death when compared to those discharged to a prosperous neighborhood.
+After controlling for other variables there is no association between SES and mortality.
+
+Both early deaths and late deaths appear to occur at similar rates across all neighborhoods.
+
 # References
 
 - **SAP-2023-004-BH-v01** -- Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
