@@ -95,6 +95,7 @@ This analysis was performed using statistical software `R` version `r getRversio
 
 There initially were `r Nobs_orig` observations on `r Nobs_orig_id` study participants considered for inclusion.
 After applying the inclusion and exclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_final` participants were included in the analysis.
+
 The epidemiological profile of the participant included in the study was a
 male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
 with an average (SD) age of `r inline_text(tab_desc, variable = AGE)` years.
@@ -130,7 +131,7 @@ The previous seizure disorder diagnosis was missing for most of the study popula
 After excluding participants with missing data from other variables a total of `r Nobs_model` complete cases were available for analysis.
 
 The survival curves of both sexes by SES quintiles can be seen in Figure 2.
-Since none of the curves cross, the proportional hazards assumption is assumed to be held i nthe study data.
+Since none of the curves cross, the proportional hazards assumption is assumed to be held in the study data.
 Overall, the distressed neighborhoods appear to have a lower survival probability then other neighborhoods.
 This appears to be true for both sexes, and males had a higher risk of dying than females in all neighborhoods.
 This plot was cropped at 85% survival for presentation purposes, see Figure A3 in the appendix for an uncropped version.
@@ -161,7 +162,7 @@ After controlling for all relevant covariates, this effect can no longer be cons
 The point estimates for all adjusted estimates of SES effect range from 0.99 to 1.12, relative to the prosperous neighborhood, and that represents a narrower range of point estimates than the crude estimates (from 1.08 to 1.28).
 
 When considering only late deaths the SES effect is also not significantly associated with mortality, and estimates relative to a prosperous neighborhood range from 1.00 to 1.07 (which is an even narrower range than the crude estimates).
-The adjusted estimates of all-time mortality can be compared with late mortality where in all neighborhoods the CI of the adjusted estimate is contained within the late deaths' CIs, except for mid-tier and distressed neighborhoods that exceed the respective upper ranges of confidence.
+The adjusted estimates of all-time mortality can be compared with late mortality where in all neighborhoods the CI of the adjusted estimate is contained within the late death CI's, except for mid-tier and distressed neighborhoods that exceed the respective upper ranges of confidence by a diminute margin (presumably due to precision and study power).
 The respective point estimates in all cases do not change by a large amount, where most differences fall under 0.1 HR.
 It can be concluded that effect of SES on the risk of late death is not substantially different from all-time death in the study population, after controlling for all covariates.
 
