@@ -88,11 +88,12 @@ This analysis was performed using statistical software `R` version `r getRversio
 
 ## Study population and follow up
 
-There initially were `r Nobs_orig` observations on `r Nobs_incl_id` study participants considered for inclusion.
-After applying the inclusion and exclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` a total of `r Nobs_final` were included in the analysis.
+There initially were `r Nobs_orig` observations on `r Nobs_orig_id` study participants considered for inclusion.
+After applying the inclusion and exclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_final` participants were included in the analysis.
 The epidemiological profile of the participant included in the study was a
 male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
 with an average (SD) age of `r inline_text(tab_desc, variable = AGE)` years.
+The average (SD) time of follow up was `r inline_text(tab_desc, variable = Time)` years.
 
 ```{r tab_desc}
 tab_desc %>%
