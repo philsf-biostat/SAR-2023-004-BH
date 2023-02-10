@@ -95,6 +95,13 @@ male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
 with an average (SD) age of `r inline_text(tab_desc, variable = AGE)` years.
 The average (SD) time of follow up was `r inline_text(tab_desc, variable = Time)` years.
 
+Races were not homogeneously available in the study population with
+`r inline_text(tab_desc, variable = Race, level = "White")` individuals being white;
+`r inline_text(tab_desc, variable = Mar, level = "Single (Never Married)")` were single (never married) at the time of injury,
+and most participants were well educated with `r inline_text(tab_desc, variable = EDUCATION, level = "Greater Than High School")` at greater than high school level.
+A total of `r inline_text(tab_desc, variable = EMPLOYMENT, level = "Employed")` were employed and
+`r inline_text(tab_desc, variable = RURALdc, level = "Urban")` participants lived in an urban area.
+
 ```{r tab_desc}
 tab_desc %>%
   as_kable(
