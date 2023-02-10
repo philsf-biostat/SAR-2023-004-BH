@@ -193,7 +193,7 @@ Death after a brain injury.
 - Previous seizure disorder diagnosis
 - Spinal cord injury
 - Cause of injury
-- Primary rehabilitation payor
+- Primary rehabilitation payer
 - Residence after rehab discharge
 - Days From Injury to Rehab Discharge
 - FIM Motor at Discharge

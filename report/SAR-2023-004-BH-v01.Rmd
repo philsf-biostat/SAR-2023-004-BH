@@ -156,7 +156,7 @@ when compared to those discharged to a prosperous neighborhood.
 ```{r tab_inf}
 tab_inf %>%
   as_kable(
-    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payor, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
+    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payer, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
   )
 ```
 
