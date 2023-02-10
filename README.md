@@ -1,6 +1,6 @@
-# Effect of social-economic of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
+# Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
 
-To determine the effect of social economic status of the neighborhood on mortality of patients with brain injury.
+To determine the effect of socioeconomic status of the neighborhood on mortality of patients with brain injury.
 
 Statistical Analysis for Brennan Hickson (US, 2023)
 <!-- Technical Report for Brennan Hickson (US, 2023) -->
