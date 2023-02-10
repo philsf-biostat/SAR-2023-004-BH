@@ -95,6 +95,10 @@ tab_desc %>%
   )
 ```
 
+The observed overall mortality was 15% in the study period.
+The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 19% to 22%.
+We will test the effect of SES quintiles on the hazard rate in the next section.
+
 ```{r fig1, fig.cap="**Figure 1** caption"}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/outcome.png", error = FALSE)
