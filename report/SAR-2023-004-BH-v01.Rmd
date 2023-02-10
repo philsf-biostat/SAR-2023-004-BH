@@ -233,7 +233,7 @@ Table A2 shows the structure of the analytical dataset.
 
 ```{r data}
 analytical_mockup %>%
-  pander(caption = "**Table A2** Analytical dataset structure")
+  pander(caption = "**Table A2** Analytical dataset structure", split.table = Inf)
 ```
 
 Due to confidentiality the data-set used in this analysis cannot be shared online in the public version of this report.
