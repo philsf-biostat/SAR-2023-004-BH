@@ -130,6 +130,8 @@ observations from
 
 ## Analytical dataset
 
+Most of the categorical variables were measured with many levels that were condensed into fewer levels for analysis.
+
 <!-- After the cleaning process -->
 <!-- `r Nvar_final` -->
 <!-- variables were included in the analysis -->
