@@ -105,7 +105,7 @@ A total of `r inline_text(tab_desc, variable = EMPLOYMENT, level = "Employed")` 
 ```{r tab_desc}
 tab_desc %>%
   as_kable(
-    caption = "**Table 1** caption"
+    caption = "**Table 1** Epidemiological, demographic and clinical characteristics of study participants."
   )
 ```
 
@@ -114,7 +114,7 @@ The distribution of cases appear homogeneous across SES quintiles (Figure 1), ra
 We will test the effect of SES quintiles on the hazard rate in the next section.
 See also Figure A2 in the appendix for the distribution of sexes in each SES quintile in the study population.
 
-```{r fig1, fig.cap="**Figure 1** caption"}
+```{r fig1, fig.cap="**Figure 1** Proportion of cases per SES quintiles."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/outcome.png", error = FALSE)
 ```
@@ -124,11 +124,11 @@ knitr::include_graphics("../figures/outcome.png", error = FALSE)
 ```{r tab_inf}
 tab_inf %>%
   as_kable(
-    caption = "**Table 2** caption"
+    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payor, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
   )
 ```
 
-```{r fig2, fig.cap="**Figure 2** caption"}
+```{r fig2, fig.cap="**Figure 2** Survival of participants, by sex and by SES quintiles."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/surv.png", error = FALSE)
 ```
@@ -165,7 +165,7 @@ knitr::include_graphics("../figures/surv_uncrop.png", error = FALSE)
 ```{r tab_app}
 tab_app %>%
   as_kable(
-    caption = "**Table A1** caption"
+    caption = "**Table A1** Alternative version of Table 2, showing effects from all covariates included in the model."
   )
 ```
 
