@@ -124,6 +124,16 @@ knitr::include_graphics("../figures/outcome.png", error = FALSE)
 The previous seizure disorder diagnosis was missing for most of the study population and was not included in the model as a covariate to preserve study power.
 After excluding participants with missing data from other variables a total of `r Nobs_model` complete cases were available for analysis (Table 2).
 
+When considering only the crude effect of SES on mortality neighborhood to which the individuals were discharged was associated with mortality.
+Participants who were discharged to a comfortable neighborhood had increased chance of dying
+(HR = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = estimate_1)`,
+95% CI = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.high_1)`),
+when compared to those discharged to a prosperous neighborhood.
+Participants discharged to a distressed neighborhood had a much higher risk
+(HR = `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = estimate_1)`,
+95% CI = `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = conf.high_1)`),
+when compared to those discharged to a prosperous neighborhood.
+
 ```{r tab_inf}
 tab_inf %>%
   as_kable(
