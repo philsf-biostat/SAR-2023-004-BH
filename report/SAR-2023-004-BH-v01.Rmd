@@ -149,6 +149,12 @@ tab_inf %>%
   )
 ```
 
+The survival curves of both sexes by SES quintiles can be seen in Figure 2.
+Since none of the curves cross, the proportional hazards assumption is assumed to be held i nthe study data.
+Overall, the distressed neighborhoods appear to have a lower survival probability then other neighborhoods.
+This appears to be true for both sexes, and males had a higher risk of dying than females in all neighborhoods.
+This plot was cropped at 85% survival for presentation purposes, see Figure A3 in the appendix for an uncropped version.
+
 ```{r fig2, fig.cap="**Figure 2** Survival of participants, by sex and by SES quintiles."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/surv.png", error = FALSE)
