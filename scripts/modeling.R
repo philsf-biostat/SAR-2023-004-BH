@@ -71,8 +71,8 @@ newdat <- expand.grid(
   Cause = "Vehicular",
   RehabPay1 = "Private Insurance",
   ResDis = "Private Residence",
-  DAYStoREHABdc = 42,
-  FIMMOTD = 53,
-  FIMCOGD = 20
+  DAYStoREHABdc = 43,
+  FIMMOTD = 52,
+  FIMCOGD = 19
   )
 rownames(newdat) <- letters[1:10]
