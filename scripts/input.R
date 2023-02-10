@@ -47,7 +47,7 @@ data.raw <- data.raw %>%
 data.raw <- data.raw %>%
   group_by(id) %>%
   filter(
-    # FollowUpPeriod == max(FollowUpPeriod, na.rm = TRUE),
+    FollowUpPeriod == max(FollowUpPeriod, na.rm = TRUE),
   ) %>%
   ungroup()
 
