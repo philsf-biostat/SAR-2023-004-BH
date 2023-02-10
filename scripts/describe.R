@@ -1,12 +1,8 @@
 # setup -------------------------------------------------------------------
 
-# library(Hmisc) # describe
 # library(skimr) # skim
-# library(gmodels) # CrossTable
 library(gtsummary)
 library(gt)
-# library(effectsize)
-# library(finalfit) # missing_compare
 
 # setup gtsummary theme
 
@@ -19,11 +15,6 @@ theme_gtsummary_compact()
 # overall description
 # analytical %>%
 #   skimr::skim()
-
-# minimum detectable effect size
-# interpret_cohens_d(0.5)
-# cohens_d(outcome ~ exposure, data = analytical) %>% interpret_cohens_d()
-# interpret_icc(0.7)
 
 # tables ------------------------------------------------------------------
 
