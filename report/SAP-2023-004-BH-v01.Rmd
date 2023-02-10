@@ -82,6 +82,7 @@ The clinical and followup tables were merged by study ID, and this was joined wi
 
 Before joining the tables by zipcode, the missing locations at discharged were assumed to not have changed since injury, and those values were used to fill missing zip data where available.
 To maximise the availability of SES data, this was also assumed for each follow up location, where the preferred information used was the zip code at discharge, when available.
+The date of death of participants was available, and its presence was used as an indicator of the living status of the participant at each follow up.
 
 The original data base had
 `r Nvar_orig`
