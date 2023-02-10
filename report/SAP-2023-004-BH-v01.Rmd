@@ -82,7 +82,6 @@ The clinical and followup tables were merged by study ID, and this was joined wi
 
 Before joining the tables by zip code, the missing locations at discharged were assumed to not have changed since injury, and those values were used to fill missing zip data where available.
 To maximize the availability of SES data, this was also assumed for each follow up location, where the preferred information used was the zip code at discharge, when available.
-The date of death of participants was available, and its presence was used as an indicator of the living status of the participant at each follow up.
 
 The original data base had
 `r Nvar_orig`
@@ -130,6 +129,8 @@ observations from
 
 ## Analytical dataset
 
+The date of death of participants was available, and its presence was used as an indicator of the living status of the participant at each follow up.
+All variables in the raw dataset had varying missing data codes in the data dictionary made available by the researcher, which were used to attribute missingness status to each datum.
 Most of the categorical variables were measured with many levels that were condensed into fewer levels for analysis.
 
 <!-- After the cleaning process -->
@@ -150,7 +151,6 @@ The total number of observations excluded due to incompleteness and exclusion cr
 ```
 
 All variables in the analytical set were labeled according to the raw data provided and values were labeled according to the data dictionary for the preparation of production-quality results tables and figures.
-All variables in the raw dataset had varying missing data codes in the dictionary made available by the researcher, which were used to attribute missingness status to each datum.
 
 # Study parameters
 
