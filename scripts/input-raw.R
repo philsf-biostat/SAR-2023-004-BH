@@ -65,6 +65,9 @@ data.raw <- data.raw %>%
     suffix = c("_Form1", "_Form2"),
   )
 
+# Original N of individuals
+Nobs_orig_id <- data.raw %>% distinct(Mod1id) %>% nrow()
+
 na_zip <- c("66666", "88888", "99999", "")
 na_date <- c("4444-04-04", "5555-05-05", "7777-07-07", "8888-08-08", "9999-09-09") %>%
   as.POSIXct(tz = "UTC")
@@ -181,4 +184,4 @@ var_label(data.raw) <- labs[intersect(colnames(data.raw), names(labs))]
 
 # data saving -------------------------------------------------------------
 
-save(data.raw, Nobs_orig, Nvar_orig, demographics, clinical, file = "dataset/brennan_data.rds")
+save(data.raw, Nobs_orig, Nvar_orig, Nobs_orig_id, demographics, clinical, file = "dataset/brennan_data.rds")

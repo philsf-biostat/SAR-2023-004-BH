@@ -74,7 +74,8 @@ data.raw <- data.raw %>%
     # status at followup Date
     outcome = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
     # time to event (in days)
-    Time = as.duration(interval(RehabDis, Date)),
+    Time_d = as.duration(interval(RehabDis, Date)),
+    Time = Time_d/dyears(1),
     # label SES quintiles
     exposure = factor(exposure, labels = c("Prosperous", "Comfortable", "Mid-Tier", "At-Risk", "Distressed")),
     # age at time of injury
@@ -127,7 +128,7 @@ data.raw <- data.raw %>%
     exposure = "SES quintiles",
     outcome = "Mortality",
     AGE = "Age at injury",
-    Time = "Time of follow up",
+    Time = "Time of follow up (years)",
     Date = "Date of last follow up",
   )
 
@@ -147,6 +148,7 @@ analytical <- data.raw %>%
     -where(is.Date),
     -IntStatus,
     -FollowUpPeriod,
+    -Time_d,
   )
 
 Nvar_final <- analytical %>% ncol

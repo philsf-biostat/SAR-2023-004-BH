@@ -88,14 +88,33 @@ This analysis was performed using statistical software `R` version `r getRversio
 
 ## Study population and follow up
 
+There initially were `r Nobs_orig` observations on `r Nobs_orig_id` study participants considered for inclusion.
+After applying the inclusion and exclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_final` participants were included in the analysis.
+The epidemiological profile of the participant included in the study was a
+male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
+with an average (SD) age of `r inline_text(tab_desc, variable = AGE)` years.
+The average (SD) time of follow up was `r inline_text(tab_desc, variable = Time)` years.
+
+Races were not homogeneously available in the study population with
+`r inline_text(tab_desc, variable = Race, level = "White")` individuals being white;
+`r inline_text(tab_desc, variable = Mar, level = "Single (Never Married)")` were single (never married) at the time of injury,
+and most participants were well educated with `r inline_text(tab_desc, variable = EDUCATION, level = "Greater Than High School")` at greater than high school level.
+A total of `r inline_text(tab_desc, variable = EMPLOYMENT, level = "Employed")` were employed and
+`r inline_text(tab_desc, variable = RURALdc, level = "Urban")` participants lived in an urban area.
+
 ```{r tab_desc}
 tab_desc %>%
   as_kable(
-    caption = "**Table 1** caption"
+    caption = "**Table 1** Epidemiological, demographic and clinical characteristics of study participants."
   )
 ```
 
-```{r fig1, fig.cap="**Figure 1** caption"}
+The observed overall mortality was 15% in the study period.
+The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 19% to 22%.
+We will test the effect of SES quintiles on the hazard rate in the next section.
+See also Figure A2 in the appendix for the distribution of sexes in each SES quintile in the study population.
+
+```{r fig1, fig.cap="**Figure 1** Proportion of cases per SES quintiles."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/outcome.png", error = FALSE)
 ```
@@ -105,11 +124,11 @@ knitr::include_graphics("../figures/outcome.png", error = FALSE)
 ```{r tab_inf}
 tab_inf %>%
   as_kable(
-    caption = "**Table 2** caption"
+    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payor, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
   )
 ```
 
-```{r fig2, fig.cap="**Figure 2** caption"}
+```{r fig2, fig.cap="**Figure 2** Survival of participants, by sex and by SES quintiles."}
 # ![Age](../figures/outcome.png)
 knitr::include_graphics("../figures/surv.png", error = FALSE)
 ```
@@ -146,7 +165,7 @@ knitr::include_graphics("../figures/surv_uncrop.png", error = FALSE)
 ```{r tab_app}
 tab_app %>%
   as_kable(
-    caption = "**Table A1** caption"
+    caption = "**Table A1** Alternative version of Table 2, showing effects from all covariates included in the model."
   )
 ```
 

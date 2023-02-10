@@ -11,15 +11,16 @@ library(survival)
 md <- analytical %>%
   select(-id, -PriorSeiz, -Mar,) %>%
   drop_na()
+Nobs_model <- md %>% nrow()
 
 # raw estimate ------------------------------------------------------------
 
-mod.crude <- coxph(Surv(Time/dyears(1), outcome) ~ exposure, md)
+mod.crude <- coxph(Surv(Time, outcome) ~ exposure, md)
 
 # adjusted ----------------------------------------------------------------
 
-mod.full <- coxph(Surv(Time/dyears(1), outcome) ~ exposure + ., md)
-mod.late <- coxph(Surv(Time/dyears(1), outcome) ~ exposure + ., filter(md, Time > dyears(1)))
+mod.full <- coxph(Surv(Time, outcome) ~ exposure + ., md)
+mod.late <- coxph(Surv(Time, outcome) ~ exposure + ., filter(md, Time > 1))
 
 # tab_inf <- tbl_merge(
 #   tbls = list(
@@ -70,8 +71,8 @@ newdat <- expand.grid(
   Cause = "Vehicular",
   RehabPay1 = "Private Insurance",
   ResDis = "Private Residence",
-  DAYStoREHABdc = 42,
-  FIMMOTD = 53,
-  FIMCOGD = 20
+  DAYStoREHABdc = 43,
+  FIMMOTD = 52,
+  FIMCOGD = 19
   )
 rownames(newdat) <- letters[1:10]
