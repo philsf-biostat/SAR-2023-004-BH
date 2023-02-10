@@ -129,10 +129,15 @@ Participants who were discharged to a comfortable neighborhood had increased cha
 (HR = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = estimate_1)`,
 95% CI = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.high_1)`),
 when compared to those discharged to a prosperous neighborhood.
-Participants discharged to a distressed neighborhood had a much higher risk
+Participants discharged to a distressed neighborhood also had a higher mortality risk
 (HR = `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = estimate_1)`,
 95% CI = `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = conf.high_1)`),
 when compared to those discharged to a prosperous neighborhood.
+
+After controlling for all relevant covariates, this effect can no longer be consistently detected, at the 5% level of significance.
+The point estimates for all adjusted estimates of SES effect range from 0.99 to 1.12, relative to the prosperous neighborhood, and that represents a narrower range of point estimates than the crude estimates (from 1.08 to 1.28).
+
+When considering only late deaths the SES effect is also not significantly associated with mortality, and estimates relative to a prosperous neighborhood range from 1.00 to 1.07 (which is an even narrower range than the crude estimates).
 
 ```{r tab_inf}
 tab_inf %>%
