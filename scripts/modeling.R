@@ -14,12 +14,12 @@ md <- analytical %>%
 
 # raw estimate ------------------------------------------------------------
 
-mod.crude <- coxph(Surv(Time/dyears(1), outcome) ~ exposure, md)
+mod.crude <- coxph(Surv(Time, outcome) ~ exposure, md)
 
 # adjusted ----------------------------------------------------------------
 
-mod.full <- coxph(Surv(Time/dyears(1), outcome) ~ exposure + ., md)
-mod.late <- coxph(Surv(Time/dyears(1), outcome) ~ exposure + ., filter(md, Time > dyears(1)))
+mod.full <- coxph(Surv(Time, outcome) ~ exposure + ., md)
+mod.late <- coxph(Surv(Time, outcome) ~ exposure + ., filter(md, Time > 1))
 
 # tab_inf <- tbl_merge(
 #   tbls = list(
