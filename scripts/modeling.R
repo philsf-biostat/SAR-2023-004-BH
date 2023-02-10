@@ -11,6 +11,7 @@ library(survival)
 md <- analytical %>%
   select(-id, -PriorSeiz, -Mar,) %>%
   drop_na()
+Nobs_model <- md %>% nrow()
 
 # raw estimate ------------------------------------------------------------
 
