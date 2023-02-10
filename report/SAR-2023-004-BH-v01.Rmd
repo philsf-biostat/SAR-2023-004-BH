@@ -1,8 +1,8 @@
 ---
-title: "[title]"
+title: "Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort"
 subtitle: 'DOCUMENT: SAR-2023-004-BH-v01'
 author: '**From:** Felipe Figueiredo **To:** Brennan Hickson'
-date: "`2023-02-09"
+date: "`2023-02-10"
 output:
   html_document:
     fig_caption: yes
@@ -37,7 +37,7 @@ panderOptions('table.split.table', 160)
 
 \newpage
 
-**[title]**
+**Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort**
 
 **Document version**
 
@@ -58,9 +58,16 @@ source("scripts/results.R", encoding = 'UTF-8')
 
 # Abbreviations
 
+- FIM: Functional Independence Measure
+- HR: hazards ratio
+- SD: standard deviation
+- SES: socioeconomic status
+
 # Context
 
 ## Objectives
+
+To determine the effect of socioeconomic status of the neighborhood on mortality of patients with brain injury.
 
 <!-- ## Data reception and cleaning -->
 
@@ -90,6 +97,7 @@ This analysis was performed using statistical software `R` version `r getRversio
 
 There initially were `r Nobs_orig` observations on `r Nobs_orig_id` study participants considered for inclusion.
 After applying the inclusion and exclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_final` participants were included in the analysis.
+
 The epidemiological profile of the participant included in the study was a
 male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
 with an average (SD) age of `r inline_text(tab_desc, variable = AGE)` years.
@@ -125,7 +133,7 @@ The previous seizure disorder diagnosis was missing for most of the study popula
 After excluding participants with missing data from other variables a total of `r Nobs_model` complete cases were available for analysis.
 
 The survival curves of both sexes by SES quintiles can be seen in Figure 2.
-Since none of the curves cross, the proportional hazards assumption is assumed to be held i nthe study data.
+Since none of the curves cross, the proportional hazards assumption is assumed to be held in the study data.
 Overall, the distressed neighborhoods appear to have a lower survival probability then other neighborhoods.
 This appears to be true for both sexes, and males had a higher risk of dying than females in all neighborhoods.
 This plot was cropped at 85% survival for presentation purposes, see Figure A3 in the appendix for an uncropped version.
@@ -148,7 +156,7 @@ when compared to those discharged to a prosperous neighborhood.
 ```{r tab_inf}
 tab_inf %>%
   as_kable(
-    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payor, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
+    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payer, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
   )
 ```
 
@@ -156,17 +164,32 @@ After controlling for all relevant covariates, this effect can no longer be cons
 The point estimates for all adjusted estimates of SES effect range from 0.99 to 1.12, relative to the prosperous neighborhood, and that represents a narrower range of point estimates than the crude estimates (from 1.08 to 1.28).
 
 When considering only late deaths the SES effect is also not significantly associated with mortality, and estimates relative to a prosperous neighborhood range from 1.00 to 1.07 (which is an even narrower range than the crude estimates).
-The adjusted estimates of all-time mortality can be compared with late mortality where in all neighborhoods the CI of the adjusted estimate is contained within the late deaths' CIs, except for mid-tier and distressed neighborhoods that exceed the respective upper ranges of confidence.
+The adjusted estimates of all-time mortality can be compared with late mortality where in all neighborhoods the CI of the adjusted estimate is contained within the late death CI's, except for mid-tier and distressed neighborhoods that exceed the respective upper ranges of confidence by a diminute margin (presumably due to precision and study power).
 The respective point estimates in all cases do not change by a large amount, where most differences fall under 0.1 HR.
 It can be concluded that effect of SES on the risk of late death is not substantially different from all-time death in the study population, after controlling for all covariates.
 
 # Observations and Limitations
 
+**Recommended reporting guideline**
+
+The adoption of the EQUATOR network (<http://www.equator-network.org/>) reporting guidelines have seen increasing adoption by scientific journals.
+All observational studies are recommended to be reported following the STROBE guideline (von Elm et al, 2014).
+
+<!-- In particular when a retrospective study is conducted using hospital records, it is recommended that the RECORD extension of the STROBE guideline is considered (Benchimol et al, 2015). -->
+
 # Conclusions
+
+The epidemiological profile of the study participant is an 31 years old white male, that has greater than high school level of education, is actively employed and lives in an urban setting.
+
+There appears to be a crude effect of SES on mortality, where participants that were discharged to either a comfortable or a distressed neighborhood had increased risk of death when compared to those discharged to a prosperous neighborhood.
+After controlling for other variables there is no association between SES and mortality.
+
+Both early deaths and late deaths appear to occur at similar rates across all neighborhoods.
 
 # References
 
-- **SAP-2023-004-BH-v01** -- Analytical Plan for [title]
+- **SAP-2023-004-BH-v01** -- Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
+- von Elm E, Altman DG, Egger M, Pocock SJ, Gøtzsche PC, Vandenbroucke JP; STROBE Initiative. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: guidelines for reporting observational studies. Int J Surg. 2014 Dec;12(12):1495-9 (<https://doi.org/10.1016/j.ijsu.2014.07.013>).
 
 # Appendix
 
@@ -217,7 +240,7 @@ Table A2 shows the structure of the analytical dataset.
 
 ```{r data}
 analytical_mockup %>%
-  pander(caption = "**Table A2** Analytical dataset structure")
+  pander(caption = "**Table A2** Analytical dataset structure", split.table = Inf)
 ```
 
 Due to confidentiality the data-set used in this analysis cannot be shared online in the public version of this report.

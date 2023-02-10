@@ -1,6 +1,6 @@
 ---
-title: '[title]'
-date: ""
+title: 'Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort'
+date: "2023-02-10"
 permalink: /portfolio/SAR-2023-004/
 redirect_from:
   - /portfolio/SAR-2023-004-BH/
@@ -16,7 +16,7 @@ tags:
   - survival-analysis
 ---
 
-Objective
+To determine the effect of socioeconomic status of the neighborhood on mortality of patients with brain injury.
 
 Statistical Analysis for Brennan Hickson (US, 2023)
 <!-- Technical Report for Brennan Hickson (US, 2023) -->
@@ -25,8 +25,6 @@ Statistical Analysis for Brennan Hickson (US, 2023)
 
 1. Descriptive analysis
 1. Inferential analysis
-1. Power analysis
-1. Missing data imputation
 1. Statistical models
 
 ## Documents

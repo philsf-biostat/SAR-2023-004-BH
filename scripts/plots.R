@@ -85,11 +85,3 @@ gg.surv <- surv_df %>%
 
 gg.surv.uncrop <- gg.surv +
   ylim(c(0, 1))
-
-# cool facet trick from https://stackoverflow.com/questions/3695497 by JWilliman
-# gg +
-#   geom_histogram(bins = 5, aes(outcome, y = ..count../tapply(..count.., ..PANEL.., sum)[..PANEL..]), fill = ff.col) +
-#   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
-#   xlab(attr(analytical$outcome, "label")) +
-#   ylab("") +
-#   facet_wrap(~ exposure, ncol = 2)
