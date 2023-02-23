@@ -118,8 +118,8 @@ tab_desc %>%
   )
 ```
 
-The observed overall mortality was 15% in the study period.
-The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 19% to 22%.
+The observed overall mortality was 37% in the study period.
+The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 30% to 39.4%.
 We will test the effect of SES quintiles on the hazard rate in the next section.
 See also Figure A2 in the appendix for the distribution of sexes in each SES quintile in the study population.
 
@@ -145,9 +145,9 @@ knitr::include_graphics("../figures/surv.png", error = FALSE)
 ```
 
 When considering only the crude effect of SES on mortality neighborhood to which the individuals were discharged was associated with mortality (Table 2).
-Participants who were discharged to a comfortable neighborhood had increased chance of dying
-(HR = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = estimate_1)`,
-95% CI = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.high_1)`),
+Participants who were discharged to an at-risk neighborhood had increased chance of dying
+(HR = `r inline_text(tab_inf, variable = exposure, level = "At-Risk", column = estimate_1)`,
+95% CI = `r inline_text(tab_inf, variable = exposure, level = "At-Risk", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "At-Risk", column = conf.high_1)`),
 when compared to those discharged to a prosperous neighborhood.
 Participants discharged to a distressed neighborhood also had a higher mortality risk
 (HR = `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = estimate_1)`,
