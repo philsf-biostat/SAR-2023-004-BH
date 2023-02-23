@@ -58,11 +58,15 @@ Nobs_incl_id <- data.raw %>% nrow()
 data.raw <- data.raw %>%
   filter(
     between(RehabDis, study_period[1], study_period[2]), # discharge date
-    # Followup <= as.Date("2019-12-31"), # follow up date
   )
 
 # inclusion criteria: study period
 Nobs_incl_per <- data.raw %>% nrow()
+
+data.raw <- data.raw %>%
+  filter(
+    Followup <= as.Date("2019-12-31") | DeathF <= as.Date("2019-12-31"), # follow up date
+  )
 
 # data wrangling ----------------------------------------------------------
 
