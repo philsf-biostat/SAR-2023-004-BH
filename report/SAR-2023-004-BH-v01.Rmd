@@ -96,7 +96,8 @@ This analysis was performed using statistical software `R` version `r getRversio
 ## Study population and follow up
 
 There initially were `r Nobs_orig` observations on `r Nobs_orig_id` study participants considered for inclusion.
-After applying the inclusion and exclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_final` participants were included in the analysis.
+After applying the inclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_incl_per` participants were included in the analysis.
+After excluding participants that were followed up concomitant with the COVID-19 pandemic to mitigate confounding on mortality causes there were `r Nobs_final` participants left in the study sample.
 
 The epidemiological profile of the participant included in the study was a
 male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
@@ -117,8 +118,8 @@ tab_desc %>%
   )
 ```
 
-The observed overall mortality was 15% in the study period.
-The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 19% to 22%.
+The observed overall mortality was 37% in the study period.
+The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 30% to 39.4%.
 We will test the effect of SES quintiles on the hazard rate in the next section.
 See also Figure A2 in the appendix for the distribution of sexes in each SES quintile in the study population.
 
@@ -144,9 +145,9 @@ knitr::include_graphics("../figures/surv.png", error = FALSE)
 ```
 
 When considering only the crude effect of SES on mortality neighborhood to which the individuals were discharged was associated with mortality (Table 2).
-Participants who were discharged to a comfortable neighborhood had increased chance of dying
-(HR = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = estimate_1)`,
-95% CI = `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "Comfortable", column = conf.high_1)`),
+Participants who were discharged to an at-risk neighborhood had increased chance of dying
+(HR = `r inline_text(tab_inf, variable = exposure, level = "At-Risk", column = estimate_1)`,
+95% CI = `r inline_text(tab_inf, variable = exposure, level = "At-Risk", column = conf.low_1)` to `r inline_text(tab_inf, variable = exposure, level = "At-Risk", column = conf.high_1)`),
 when compared to those discharged to a prosperous neighborhood.
 Participants discharged to a distressed neighborhood also had a higher mortality risk
 (HR = `r inline_text(tab_inf, variable = exposure, level = "Distressed", column = estimate_1)`,
@@ -211,6 +212,11 @@ knitr::include_graphics("../figures/surv_uncrop.png", error = FALSE)
 ```
 
 ## Modeling strategy
+
+```{r A4, fig.cap="**Figure A4** Schoenfeld residuals for the full model."}
+# ![Age](../figures/distr_age.png)
+knitr::include_graphics("../figures/diag.png", error = FALSE)
+```
 
 ```{r tab_app}
 tab_app %>%
