@@ -40,9 +40,9 @@ data.raw <- data.raw %>%
 
 # rename selecting vars
 demographics <- str_replace(demographics, "Mod1id", "id")
-demographics <- str_replace(demographics, "DCIQuintile", "SES")
+demographics <- str_replace(demographics, "DCIQuintile", "exposure")
 clinical <- str_replace(clinical, "Mod1id", "id")
-clinical <- str_replace(clinical, "DCIQuintile", "SES")
+clinical <- str_replace(clinical, "DCIQuintile", "exposure")
 
 # inclusion criteria: up to 10yr of follow up
 data.raw <- data.raw %>%
