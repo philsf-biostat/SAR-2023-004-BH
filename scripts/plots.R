@@ -66,7 +66,7 @@ gg.surv <- surv_df %>%
     censor = FALSE,
     conf.int = FALSE,
     # crop. uncrop in separate figure
-    ylim = c(.85, 1),
+    ylim = c(.5, 1),
     # labels
     title = "Effect of SES on survival",
     xlab = "Time (years)",
@@ -80,11 +80,13 @@ gg.surv <- surv_df %>%
     legend.text = element_text(size = 6),
     legend.title = element_text(size = 7),
     # when SexF is added to the plot, we need to change legend position
-    legend.position = "right",
+    # legend.position = "right",
+    legend.position = c(.20, .35),
   )
 
 gg.surv.uncrop <- gg.surv +
-  ylim(c(0, 1))
+  ylim(c(0, 1)) +
+  scale_y_continuous(labels = scales::label_percent())
 
 # # Schoenfeld residuals
 # ggcoxzph(cox.zph(mod.full), ggtheme = theme_ff(), font.main = 10)
