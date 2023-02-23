@@ -96,7 +96,8 @@ This analysis was performed using statistical software `R` version `r getRversio
 ## Study population and follow up
 
 There initially were `r Nobs_orig` observations on `r Nobs_orig_id` study participants considered for inclusion.
-After applying the inclusion and exclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_final` participants were included in the analysis.
+After applying the inclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r Nobs_incl_per` participants were included in the analysis.
+After excluding participants that were followed up concomitant with the COVID-19 pandemic to mitigate confounding on mortality causes there were `r Nobs_final` participants left in the study sample.
 
 The epidemiological profile of the participant included in the study was a
 male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
@@ -211,6 +212,11 @@ knitr::include_graphics("../figures/surv_uncrop.png", error = FALSE)
 ```
 
 ## Modeling strategy
+
+```{r A4, fig.cap="**Figure A4** Schoenfeld residuals for the full model."}
+# ![Age](../figures/distr_age.png)
+knitr::include_graphics("../figures/diag.png", error = FALSE)
+```
 
 ```{r tab_app}
 tab_app %>%
