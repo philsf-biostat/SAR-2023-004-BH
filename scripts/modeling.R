@@ -15,12 +15,27 @@ mod.crude <- coxph(Surv(Time, outcome) ~ exposure, md)
 # adjusted ----------------------------------------------------------------
 
 mod.full <- coxph(Surv(Time, outcome) ~ exposure + ., md)
-mod.late <- coxph(Surv(Time, outcome) ~ exposure + ., filter(md, Time > 1))
+
+# Schoenfeld residuals
+# (cox.zph(mod.full))$table %>% as.data.frame() %>% arrange(p)
+
+# remove vars after Schoenfeld test
+mod.final <- update(mod.full, . ~ .
+                    -FIMMOTD
+                    -FIMCOGD
+                    -DAYStoREHABdc
+                    )
+
+# # add interaction terms to the model
+# mod.final <- update(mod.final, . ~ . + exposure*(RehabPay1 + RURALdc))
+
+# late deaths (over 1 year)
+mod.late <- update(mod.final, data = filter(md, Time > 1))
 
 # tab_inf <- tbl_merge(
 #   tbls = list(
 #     mod.crude %>% tbl_regression(exp = TRUE, include = exposure) %>% bold_labels() %>% bold_p(), # crude HR
-#     mod.full %>% tbl_regression(exp = TRUE, include = exposure) %>% bold_labels() %>% bold_p(), # aHR
+#     mod.final %>% tbl_regression(exp = TRUE, include = exposure) %>% bold_labels() %>% bold_p(), # aHR
 #     mod.late %>% tbl_regression(exp = TRUE, include = exposure) %>% bold_labels() %>% bold_p() # Late deaths
 #     ),
 #   tab_spanner = c("Crude estimate", "Adjusted estimate", "Late deaths")
@@ -40,7 +55,7 @@ tab_inf <- read_rds("dataset/tab_inf.rds")
 # tab_app <- tbl_merge(
 #   tbls = list(
 #     mod.crude %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p(), # crude HR
-#     mod.full %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p(), # aHR
+#     mod.final %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p(), # aHR
 #     mod.late %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p() # Late deaths
 #   ),
 #   tab_spanner = c("Crude estimate", "Adjusted estimate", "Late deaths")
@@ -65,9 +80,9 @@ newdat <- expand.grid(
   SCI = "No",
   Cause = "Vehicular",
   RehabPay1 = "Private Insurance",
-  ResDis = "Private Residence",
-  DAYStoREHABdc = 43,
-  FIMMOTD = 52,
-  FIMCOGD = 19
+  ResDis = "Private Residence"
+  # DAYStoREHABdc = 43,
+  # FIMMOTD = 52,
+  # FIMCOGD = 19
   )
 rownames(newdat) <- letters[1:10]
