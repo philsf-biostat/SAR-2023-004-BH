@@ -27,6 +27,13 @@ data.raw <- data.raw %>%
     exposure = DCIQuintile,
   ) %>%
   mutate(
+    # create new Date with either DeathF OR Followup - prioritize Deaths over Followup when both are present
+    Date = if_else(is.na(DeathF), Followup, DeathF),
+    # status at followup Date
+    outcome = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
+    # time to event (in days)
+    Time_d = as.duration(interval(RehabDis, Date)),
+    Time = Time_d/dyears(1),
   ) %>%
   filter(
   )
@@ -63,9 +70,10 @@ data.raw <- data.raw %>%
 # inclusion criteria: study period
 Nobs_incl_per <- data.raw %>% nrow()
 
+# exclusion criteria: COVID is a possible confounder, use outcome Status Date to exclude
 data.raw <- data.raw %>%
   filter(
-    Followup <= as.Date("2019-12-31") | DeathF <= as.Date("2019-12-31"), # follow up date
+    Date <= as.Date("2019-12-31") # last date (status)
   )
 
 # data wrangling ----------------------------------------------------------
@@ -73,13 +81,6 @@ data.raw <- data.raw %>%
 data.raw <- data.raw %>%
   mutate(
     id = as.character(id), # or as.factor
-    # create new Date with either DeathF OR Followup - prioritize Deaths over Followup when both are present
-    Date = if_else(is.na(DeathF), Followup, DeathF),
-    # status at followup Date
-    outcome = as.numeric(!is.na(DeathF)), # 0=alive, 1=dead
-    # time to event (in days)
-    Time_d = as.duration(interval(RehabDis, Date)),
-    Time = Time_d/dyears(1),
     # label SES quintiles
     exposure = factor(exposure, labels = c("Prosperous", "Comfortable", "Mid-Tier", "At-Risk", "Distressed")),
     # age at time of injury
