@@ -23,7 +23,8 @@ mod.full <- coxph(Surv(Time, outcome) ~ exposure + ., md)
 mod.final <- update(mod.full, . ~ .
                     -FIMMOTD
                     -FIMCOGD
-                    -DAYStoREHABdc
+                    # -DAYStoREHABdc
+                    -Cause
                     )
 
 # # add interaction terms to the model
@@ -78,11 +79,11 @@ newdat <- expand.grid(
   EMPLOYMENT = "Employed",
   RURALdc = "Urban",
   SCI = "No",
-  Cause = "Vehicular",
-  RehabPay1 = "Private Insurance",
-  ResDis = "Private Residence"
-  # DAYStoREHABdc = 43,
+  # Cause = "Vehicular",
+  ResDis = "Private Residence",
+  DAYStoREHABdc = 44,
   # FIMMOTD = 52,
   # FIMCOGD = 19
+  RehabPay1 = "Private Insurance"
   )
 rownames(newdat) <- letters[1:10]

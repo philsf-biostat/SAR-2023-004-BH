@@ -96,8 +96,8 @@ This analysis was performed using statistical software `R` version `r getRversio
 ## Study population and follow up
 
 There initially were `r style_number(Nobs_orig)` observations on `r style_number(Nobs_orig_id)` study participants considered for inclusion.
-After applying the inclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r style_number(Nobs_incl_per)` participants were included in the analysis.
-After excluding participants that were followed up concomitant with the COVID-19 pandemic to mitigate confounding on mortality causes there were `r style_number(Nobs_final)` participants left in the study sample.
+After excluding follow up measurements during the COVID-19 pandemic to mitigate confounding on mortality causes there were `r style_number(Nobs_incl_per)` observations left in the study sample.
+After applying the inclusion criteria for the study period between `r study_period[1]` and `r study_period[2]` and considering the status at the last available follow up time for each individual a total of `r style_number(Nobs_final)` participants were included in the analysis.
 
 The epidemiological profile of the participant included in the study was a
 male participant (`r inline_text(tab_desc, variable = SexF, level = "Male")`)
@@ -118,8 +118,8 @@ tab_desc %>%
   )
 ```
 
-The observed overall mortality was 37% in the study period.
-The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 30% to 39.4%.
+The observed overall mortality was 13.5% in the study period.
+The distribution of cases appear homogeneous across SES quintiles (Figure 1), ranging from 10.6% to 13.5%.
 We will test the effect of SES quintiles on the hazard rate in the next section.
 See also Figure A2 in the appendix for the distribution of sexes in each SES quintile in the study population.
 
