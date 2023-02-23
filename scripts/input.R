@@ -44,6 +44,15 @@ demographics <- str_replace(demographics, "DCIQuintile", "exposure")
 clinical <- str_replace(clinical, "Mod1id", "id")
 clinical <- str_replace(clinical, "DCIQuintile", "exposure")
 
+# exclusion criteria: COVID is a possible confounder, use outcome Status Date to exclude
+data.raw <- data.raw %>%
+  filter(
+    Date <= as.Date("2019-12-31") # last date (status)
+  )
+
+# exclusion criteria: before 2020
+Nobs_incl_per <- data.raw %>% nrow()
+
 # inclusion criteria: up to 10yr of follow up
 data.raw <- data.raw %>%
   filter(
@@ -65,15 +74,6 @@ Nobs_incl_id <- data.raw %>% nrow()
 data.raw <- data.raw %>%
   filter(
     between(RehabDis, study_period[1], study_period[2]), # discharge date
-  )
-
-# inclusion criteria: study period
-Nobs_incl_per <- data.raw %>% nrow()
-
-# exclusion criteria: COVID is a possible confounder, use outcome Status Date to exclude
-data.raw <- data.raw %>%
-  filter(
-    Date <= as.Date("2019-12-31") # last date (status)
   )
 
 # data wrangling ----------------------------------------------------------
