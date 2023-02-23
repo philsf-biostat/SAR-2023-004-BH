@@ -11,6 +11,8 @@ gg <- analytical %>%
   scale_fill_brewer(palette = ff.pal) +
   theme_ff()
 
+crop <- 0.5
+
 # plots -------------------------------------------------------------------
 
 gg.outcome <- gg +
@@ -66,7 +68,7 @@ gg.surv <- surv_df %>%
     censor = FALSE,
     conf.int = FALSE,
     # crop. uncrop in separate figure
-    ylim = c(.5, 1),
+    ylim = c(crop, 1),
     # labels
     title = "Effect of SES on survival",
     xlab = "Time (years)",
