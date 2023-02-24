@@ -113,7 +113,8 @@ A total of `r inline_text(tab_desc, variable = EMPLOYMENT, level = "Employed")` 
 
 ```{r tab_desc}
 tab_desc %>%
-  as_kable(
+  as_kable(              # only for markdown
+  # as_flex_table(       # only for DOCX
     caption = "**Table 1** Epidemiological, demographic and clinical characteristics of study participants."
   )
 ```
@@ -156,7 +157,8 @@ when compared to those discharged to a prosperous neighborhood.
 
 ```{r tab_inf}
 tab_inf %>%
-  as_kable(
+  as_kable(              # only for markdown
+  # as_flex_table(       # only for DOCX
     caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payer, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
   )
 
@@ -224,7 +226,8 @@ knitr::include_graphics("../figures/diag.png", error = FALSE)
 
 ```{r tab_app}
 tab_app %>%
-  as_kable(
+  as_kable(              # only for markdown
+  # as_flex_table(       # only for DOCX
     caption = "**Table A1** Alternative version of Table 2, showing effects from all covariates included in the model."
   )
 ```
