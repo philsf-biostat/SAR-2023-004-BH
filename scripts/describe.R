@@ -13,8 +13,10 @@ theme_gtsummary_compact()
 # exploratory -------------------------------------------------------------
 
 # overall description
-# analytical %>%
-#   skimr::skim()
+# analytical %>% skimr::skim()
+
+# outcome by exposure
+analytical %>% group_by(exposure) %>% skimr::skim(outcome)
 
 # tables ------------------------------------------------------------------
 

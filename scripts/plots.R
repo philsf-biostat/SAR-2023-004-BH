@@ -11,6 +11,8 @@ gg <- analytical %>%
   scale_fill_brewer(palette = ff.pal) +
   theme_ff()
 
+crop <- 0.5
+
 # plots -------------------------------------------------------------------
 
 gg.outcome <- gg +
@@ -46,7 +48,7 @@ gg.ses <- gg +
 
 # survival curves ---------------------------------------------------------
 
-cxsf <- survfit(mod.full, newdata = newdat, conf.type = "none")
+cxsf <- survfit(mod.final, newdata = newdat, conf.type = "none")
 surv_cxsf <- surv_summary(cxsf, data = analytical) %>% tibble()
 m_newdat <- newdat[as.character(surv_cxsf$strata), ]
 
@@ -66,7 +68,7 @@ gg.surv <- surv_df %>%
     censor = FALSE,
     conf.int = FALSE,
     # crop. uncrop in separate figure
-    ylim = c(.85, 1),
+    ylim = c(crop, 1),
     # labels
     title = "Effect of SES on survival",
     xlab = "Time (years)",
@@ -80,8 +82,13 @@ gg.surv <- surv_df %>%
     legend.text = element_text(size = 6),
     legend.title = element_text(size = 7),
     # when SexF is added to the plot, we need to change legend position
-    legend.position = "right",
+    # legend.position = "right",
+    legend.position = c(.20, .35),
   )
 
 gg.surv.uncrop <- gg.surv +
-  ylim(c(0, 1))
+  ylim(c(0, 1)) +
+  scale_y_continuous(labels = scales::label_percent())
+
+# # Schoenfeld residuals
+# ggcoxzph(cox.zph(mod.full), ggtheme = theme_ff(), font.main = 10)
