@@ -2,7 +2,7 @@
 title: "Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort"
 subtitle: 'DOCUMENT: SAR-2023-004-BH-v01'
 author: '**From:** Felipe Figueiredo **To:** Brennan Hickson'
-date: "`2023-02-10"
+date: "2023-02-10"
 output:
   html_document:
     fig_caption: yes
