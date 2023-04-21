@@ -62,6 +62,7 @@ gg.surv <- surv_df %>%
     color = "exposure",
     # linetype = "exposure",
     linetype = "SexF",
+    lwd = .2,
     # config extras (optional)
     # surv.median.line = "hv",
     # risk.table = TRUE,
