@@ -48,7 +48,7 @@ clinical <- c(
   "IntStatus",
   "Followup")
 
-num_vars <- c("AGE", "DAYStoREHABdc", "FIMMOTD", "FIMCOGD")
+num_vars <- c("AGE", "DAYStoREHABdc", "FIMMOTD", "FIMCOGD", "FollowUpPeriod")
 
 # participants data -------------------------------------------------------
 
@@ -122,17 +122,27 @@ data.raw <- data.raw %>%
 
 # data cleaning -----------------------------------------------------------
 
-data.raw <- data.raw %>%
-  mutate(
-    # Fill missing ZipDis with ZipInj
-    ZipDis = if_else(is.na(ZipDis), ZipInj, ZipDis),
-    # Fill missing ZipF with (filled) ZipDis
-    ZipF = if_else(is.na(ZipF), ZipDis, ZipF),
-    # Fill Death dates from Form1
-    DeathF = if_else(is.na(DeathF), Death, DeathF),
-    # keep FU as numeric, for later filtering
-    FollowUpPeriod = as.numeric(FollowUpPeriod),
-  )
+# # create shadow vars before imputation
+# data.raw <- data.raw %>%
+#   mutate(ZipDis.Shadow = is.na(ZipDis), .after = ZipDis)
+# 
+# # impute Zip codes
+# data.raw <- data.raw %>%
+#   mutate(
+#     # Fill missing ZipDis with ZipInj
+#     ZipDis = if_else(is.na(ZipDis), ZipInj, ZipDis),
+#     # Fill missing ZipF with (filled) ZipDis
+#     ZipF = if_else(is.na(ZipF), ZipDis, ZipF),
+#     # Fill Death dates from Form1
+#     DeathF = if_else(is.na(DeathF), Death, DeathF),
+#     # keep FU as numeric, for later filtering
+#     FollowUpPeriod = as.numeric(FollowUpPeriod),
+#   )
+# 
+# # which values were imputed?
+# imputed <- data.raw %>%
+#   # select(starts_with("ZipD")) %>%
+#   filter(ZipDis.Shadow, !is.na(ZipDis))
 
 # SES data ----------------------------------------------------------------
 

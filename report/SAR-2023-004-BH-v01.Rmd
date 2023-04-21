@@ -2,7 +2,7 @@
 title: "Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort"
 subtitle: 'DOCUMENT: SAR-2023-004-BH-v01'
 author: '**From:** Felipe Figueiredo **To:** Brennan Hickson'
-date: "`2023-02-10"
+date: "2023-02-10"
 output:
   html_document:
     fig_caption: yes
@@ -115,6 +115,8 @@ A total of `r inline_text(tab_desc, variable = EMPLOYMENT, level = "Employed")` 
 tab_desc %>%
   as_kable(              # only for markdown
   # as_flex_table(       # only for DOCX
+  # ) %>%
+  # flextable::set_caption(
     caption = "**Table 1** Epidemiological, demographic and clinical characteristics of study participants."
   )
 ```
@@ -159,7 +161,9 @@ when compared to those discharged to a prosperous neighborhood.
 tab_inf %>%
   as_kable(              # only for markdown
   # as_flex_table(       # only for DOCX
-    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payer, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
+  # ) %>%
+  # flextable::set_caption(
+    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, rehabilitation payer, residence after rehab discharge and days from injury to discharge."
   )
 
 range_crude <- tab_inf$tbls[[1]]$table_body$estimate %>% range(na.rm = TRUE) %>% style_number(2)
@@ -231,6 +235,8 @@ knitr::include_graphics("../figures/diag.png", error = FALSE)
 tab_app %>%
   as_kable(              # only for markdown
   # as_flex_table(       # only for DOCX
+  # ) %>%
+  # flextable::set_caption(
     caption = "**Table A1** Alternative version of Table 2, showing effects from all covariates included in the model."
   )
 ```
