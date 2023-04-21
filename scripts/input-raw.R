@@ -48,7 +48,7 @@ clinical <- c(
   "IntStatus",
   "Followup")
 
-num_vars <- c("AGE", "DAYStoREHABdc", "FIMMOTD", "FIMCOGD")
+num_vars <- c("AGE", "DAYStoREHABdc", "FIMMOTD", "FIMCOGD", "FollowUpPeriod")
 
 # participants data -------------------------------------------------------
 
