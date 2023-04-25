@@ -172,6 +172,12 @@ data.raw <- data.raw %>%
     across(where(is.POSIXt), as_date),
   )
 
+# keep labelled numeric vars before wholesale conversion to factor
+data.raw <- data.raw %>%
+  mutate(
+    across(all_of(num_vars), as.numeric),
+  )
+
 # convert haven_labelled to factor (missing value codes are used automatically)
 data.raw <- data.raw %>%
   mutate(
@@ -181,7 +187,6 @@ data.raw <- data.raw %>%
 # convert back (from factor) the variable types
 data.raw <- data.raw %>%
   mutate(
-    across(all_of(num_vars), as.numeric),
     across(starts_with("Zip"), as.character),
   )
 
