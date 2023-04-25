@@ -69,11 +69,11 @@ tab_app <- read_rds("dataset/tab_app.rds")
 # predictions & curves ----------------------------------------------------
 
 newdat <- expand.grid(
-  exposure = levels(md$exposure),
-  SexF = levels(md$SexF),
+  exposure = levels(analytical$exposure),
+  SexF = levels(analytical$SexF),
   # SexF = "Male",
   Race = "White",
-  AGE = 31,
+  AGE = round(mean(analytical$AGE, na.rm = TRUE)),
   PROBLEMUse = "No",
   EDUCATION = "Greater Than High School",
   EMPLOYMENT = "Employed",
@@ -81,9 +81,9 @@ newdat <- expand.grid(
   SCI = "No",
   # Cause = "Vehicular",
   ResDis = "Private Residence",
-  DAYStoREHABdc = 44,
-  # FIMMOTD = 52,
-  # FIMCOGD = 19
+  DAYStoREHABdc = round(mean(analytical$DAYStoREHABdc, na.rm = TRUE)),
+  FIMMOTD = round(mean(analytical$FIMMOTD, na.rm = TRUE)),
+  FIMCOGD = round(mean(analytical$FIMCOGD, na.rm = TRUE)),
   RehabPay1 = "Private Insurance"
   )
 rownames(newdat) <- letters[1:10]
