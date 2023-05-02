@@ -21,7 +21,7 @@ mod.full <- coxph(Surv(Time, outcome) ~ exposure + ., md)
 
 # remove vars after Schoenfeld test
 mod.final <- update(mod.full, . ~ .
-                    # -FIMMOTD
+                    -FIMMOTD
                     -FIMCOGD
                     # -DAYStoREHABdc
                     -Cause
