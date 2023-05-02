@@ -1,5 +1,5 @@
 ---
-title: 'Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort'
+title: 'Effect of socioeconomic status in mortality rates after brain injury: retrospective cohort'
 date: "2023-02-10"
 permalink: /portfolio/SAR-2023-004/
 redirect_from:
