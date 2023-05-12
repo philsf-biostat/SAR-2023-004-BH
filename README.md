@@ -29,13 +29,17 @@ Statistical Analysis for Brennan Hickson (US, 2023)
 - [Online visualization][reportviz-v01]
 - [PDF][pdf-v01]
 
-<!-- ## Associated analyses -->
+## Associated analyses
 
-<!-- This analysis is part of a larger project and is supported by other analyses, linked below. -->
+This analysis is part of a larger project and is supported by other analyses, linked below.
 
-<!-- **[assoc_title]** -->
+**Migration patterns in a cohort of individuals with brain injury in the US**
 
-<!-- <[assoc_link]> -->
+<https://philsf-biostat.github.io/SAR-2023-016-BH/>
+
+**Sensitivity of mortality rates to imputation of missing socioeconomic data after brain injury: cohort study**
+
+<https://philsf-biostat.github.io/SAR-2023-017-BH/>
 
 ## Portfolio
 
