@@ -76,6 +76,13 @@ data.raw <- data.raw %>%
     between(RehabDis, study_period[1], study_period[2]), # discharge date
   )
 
+# inclusion criteria: valid times
+data.raw <- data.raw %>%
+  filter(Time>0)
+
+# remove invalid observations (outcome at time 0 or below)
+Nobs_invalid <- data.raw %>% nrow()
+
 # data wrangling ----------------------------------------------------------
 
 data.raw <- data.raw %>%
