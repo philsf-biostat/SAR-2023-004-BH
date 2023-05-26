@@ -126,6 +126,8 @@ data.raw <- data.raw %>%
                          Violence = c("Gunshot Wound", "Assaults With Blunt Instrument", "Other Violence"),
                          other_level = "Other",
                          ),
+    SCI = as.numeric(SCI == "Yes"),
+    PROBLEMUse = as.numeric(PROBLEMUse == "Yes"),
     # relevel variables
     SexF = fct_relevel(SexF, "Male"),
     RehabPay1 = fct_relevel(RehabPay1, "Private Insurance"),
