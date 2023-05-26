@@ -41,7 +41,26 @@ mod.final <- update(mod.full, . ~ .
                     -FIMCOGD
                     -DAYStoREHABdc
                     -Cause
+                    +strata(Cause)
+                    +FIMMOTD4
+                    +FIMCOGD4
                     )
+
+mod.final <- coxph(Surv(Time, outcome) ~ exposure
+                   + SexF
+                   + Race
+                   + AGE
+                   + PROBLEMUse
+                   + EDUCATION
+                   + EMPLOYMENT
+                   + RURALdc
+                   + SCI
+                   + RehabPay1
+                   + ResDis
+                   + FIMMOTD4
+                   + FIMCOGD4
+                   + strata(Cause),
+                   data = md)
 
 # # add interaction terms to the model
 # mod.final <- update(mod.final, . ~ . + exposure*(RehabPay1 + RURALdc))
