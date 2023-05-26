@@ -124,6 +124,8 @@ data.raw <- data.raw %>%
     RehabPay1 = fct_relevel(RehabPay1, "Private Insurance"),
     EDUCATION = fct_relevel(EDUCATION, "Greater Than High School"),
     RURALdc = fct_relevel(RURALdc, "Suburban"),
+    FIMMOTD4 = cut(FIMMOTD, breaks = c(0, quantile(FIMMOTD, probs = c(.25, .50, .75), na.rm = TRUE), 100), labels = c("Q1", "Q2", "Q3", "Q4")), #, labels = c("Q1", "Q2", "Q3", "Q4"), right = FALSE
+    FIMCOGD4 = cut(FIMCOGD, breaks = c(0, quantile(FIMCOGD, probs = c(.25, .50, .75), na.rm = TRUE), 100), labels = c("Q1", "Q2", "Q3", "Q4")),
   )
 
 # labels ------------------------------------------------------------------
@@ -135,6 +137,8 @@ data.raw <- data.raw %>%
     AGE = "Age at injury",
     Time = "Time of follow up (years)",
     Date = "Date of last follow up",
+    FIMMOTD4 = str_replace(attr(data.raw$FIMMOTD, "label"), ":", " quartiles"),
+    FIMCOGD4 = str_replace(attr(data.raw$FIMCOGD, "label"), ":", " quartiles"),
   )
 
 # analytical dataset ------------------------------------------------------

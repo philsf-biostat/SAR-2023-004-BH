@@ -338,4 +338,116 @@ sch(res.sp.time.sch)
 plot(cox.zph(mod.sp.time, transform = "identity")[15])
 # plot(cox.zph(mod.sp.sptime, transform = "identity")[15])
 
+# FIM quartiles -----------------------------------------------------------
 
+mod.full.q <- update(mod.full, . ~ . -FIMMOTD -FIMCOGD + FIMMOTD4 + FIMCOGD4 )
+res.full.q.sch <- cox.zph(mod.full.q)
+
+sch(res.full.q.sch)
+
+png("figures/diag_full_q-sch.png", h = 2*h, w = 2*w)
+par(mfrow = c(2,2))
+# plot(cox.zph(mod.ful, transform = "identity")[12])
+# abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.ful, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.ful, transform = "identity")[14])
+abline(h=0, col = "red", lwd = 2)
+# plot(cox.zph(mod.full.q, transform = "identity")[12])
+# abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.full.q, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.full.q, transform = "identity")[14])
+abline(h=0, col = "red", lwd = 2)
+dev.off()
+dev.off()
+
+# stratified
+mod.strat.q <- update(mod.strat, . ~ . -FIMMOTD -FIMCOGD + FIMMOTD4 + FIMCOGD4)
+res.strat.q.sch <- cox.zph(mod.strat.q)
+res.strat.q.m <- resid(mod.strat.q, type = "martingale")
+
+sch(res.strat.q.sch)
+
+png("figures/diag_strat_q-sch.png", h = 2*h, w = 2*w)
+par(mfrow = c(2,2))
+# plot(cox.zph(mod.strat, transform = "identity")[12])
+# abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat, transform = "identity")[14])
+abline(h=0, col = "red", lwd = 2)
+# plot(cox.zph(mod.strat.q, transform = "identity")[12])
+# abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat.q, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat.q, transform = "identity")[14])
+abline(h=0, col = "red", lwd = 2)
+dev.off()
+
+plot(res.strat.q.m, ylab = "Martingale residuals")
+lines(lowess(res.strat.q.m, iter = 0), lty = 2, col = "red", lwd = 2)
+# identify(res.strat.q.m)
+dev.off()
+
+png("figures/diag_null_q-mar.png", h = 2*h, w = 2*w)
+par(mfrow = c(2,2))
+plot(md$FIMMOTD, res.null.m, ylab = "Martingale residuals")
+lines(lowess(md$FIMMOTD, res.null.m, iter = 0), lty = 2, col = "blue", lwd = 2)
+plot(md$FIMCOGD, res.null.m, ylab = "Martingale residuals")
+lines(lowess(md$FIMCOGD, res.null.m, iter = 0), lty = 2, col = "blue", lwd = 2)
+plot(md$FIMMOTD4, res.null.m, ylab = "Martingale residuals", xlab = "md$FIMMOTD4")
+lines(lowess(md$FIMMOTD4, res.null.m, iter = 0), lty = 2, col = "blue", lwd = 2)
+plot(md$FIMCOGD4, res.null.m, ylab = "Martingale residuals", xlab = "md$FIMCOGD4")
+lines(lowess(md$FIMCOGD4, res.null.m, iter = 0), lty = 2, col = "blue", lwd = 2)
+# identify(res.null.m)
+dev.off()
+
+# strata + drop days
+mod.strat.q.nodays <- update(mod.strat.q, . ~ . -DAYStoREHABdc)
+res.strat.q.nodays.sch <- cox.zph(mod.strat.q.nodays)
+
+sch(res.strat.q.nodays.sch)
+diag_strat_q_late-sch.png
+png("figures/diag_strat_q_nodays-sch.png", h = 2*h, w = 2*w)
+par(mfrow = c(2,2))
+plot(cox.zph(mod.strat, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat, transform = "identity")[14])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat.q.nodays, transform = "identity")[12])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat.q.nodays, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+dev.off()
+
+# late + strat (keep days)
+
+# works well with cutpoint = 0.25
+
+mod2.strat.q <- update(mod2.strat, . ~ . -FIMMOTD -FIMCOGD + FIMMOTD4 + FIMCOGD4)
+res.strat2.q.sch <- cox.zph(mod2.strat.q)
+
+sch(res.strat2.q.sch)
+
+png("figures/diag_strat_q_late-sch.png", h = 2*h, w = 3*w)
+par(mfrow = c(2,3))
+plot(cox.zph(mod.strat, transform = "identity")[12])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod.strat, transform = "identity")[14])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod2.strat.q, transform = "identity")[12])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod2.strat.q, transform = "identity")[13])
+abline(h=0, col = "red", lwd = 2)
+plot(cox.zph(mod2.strat.q, transform = "identity")[14])
+abline(h=0, col = "red", lwd = 2)
+dev.off()
+
+# GoF
+anova(mod.full, mod.full.q)
+anova(mod.strat, mod.strat.q)
+anova(mod.strat, mod.strat.q.nodays)
+anova(mod2.strat, mod2.strat.q)
