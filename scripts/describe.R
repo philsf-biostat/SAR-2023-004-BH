@@ -21,6 +21,7 @@ analytical %>% group_by(exposure) %>% skimr::skim(outcome)
 # tables ------------------------------------------------------------------
 
 # tab_desc <- analytical %>%
+#   select(-FIMMOTD, -FIMCOGD,) %>%
 #   tbl_summary(
 #     include = -id,
 #     # by = exposure,
