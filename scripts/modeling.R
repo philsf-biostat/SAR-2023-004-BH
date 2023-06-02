@@ -86,6 +86,8 @@ newdat <- expand.grid(
   DAYStoREHABdc = round(mean(analytical$DAYStoREHABdc, na.rm = TRUE)),
   FIMMOTD = round(mean(analytical$FIMMOTD, na.rm = TRUE)),
   FIMCOGD = round(mean(analytical$FIMCOGD, na.rm = TRUE)),
+  FIMMOTD4 = "Q2",
+  FIMCOGD4 = "Q1",
   RehabPay1 = "Private Insurance"
   )
 rownames(newdat) <- letters[1:10]
