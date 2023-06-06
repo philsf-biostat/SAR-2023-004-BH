@@ -26,6 +26,10 @@ tab_inf <- tbl_merge(
 
 # table A1 ----------------------------------------------------------------
 
+# use SE instead of CI
+theme_gtsummary_journal("qjecon")
+theme_gtsummary_compact()
+
 tab_app <- tbl_merge(
   tbls = list(
     mod.crude %>% tbl_regression(exp = TRUE) %>% bold_labels() %>% bold_p(), # crude HR
@@ -36,6 +40,10 @@ tab_app <- tbl_merge(
   ),
   tab_spanner = c("Crude estimate", "Model 2", "Model 3", "Model 4")
 )
+
+# revert theme to previous
+theme_ff_gtsummary()
+theme_gtsummary_compact()
 
 # save tables -------------------------------------------------------------
 
