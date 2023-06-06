@@ -35,59 +35,32 @@ mod.full <- coxph(Surv(Time, outcome) ~ exposure +
                     FIMCOGD,
                   md)
 
-# # remove vars after Schoenfeld test
-# mod.final <- update(mod.full, . ~ .
-#                     -FIMMOTD
-#                     -FIMCOGD
-#                     -DAYStoREHABdc
-#                     -Cause
-#                     +strata(Cause)
-#                     +FIMMOTD4
-#                     +FIMCOGD4
-#                     )
-
 # nested models -----------------------------------------------------------
 
 # crude + social
-mod.social <- coxph(Surv(Time, outcome) ~ exposure
-                    + SexF
-                    + Race
-                    + AGE
-                    + EDUCATION
-                    + EMPLOYMENT,
-                    data = md)
+mod.social <- update(mod.crude, . ~ .
+                     + SexF
+                     + Race
+                     + AGE
+                     + EDUCATION
+                     + EMPLOYMENT
+                     )
 
 # crude + social + clinical
-mod.social.clinical <- coxph(Surv(Time, outcome) ~ exposure
-                             + SexF
-                             + Race
-                             + AGE
-                             + PROBLEMUse
-                             + EDUCATION
-                             + EMPLOYMENT
-                             + SCI
-                             + RehabPay1
-                             + FIMMOTD4
-                             + FIMCOGD4
-                             + strata(Cause),
-                             data = md)
+mod.social.clinical <- update(mod.social, . ~ .
+                              + strata(Cause)
+                              + RehabPay1
+                              + SCI
+                              + PROBLEMUse
+                              + FIMMOTD4
+                              + FIMCOGD4
+                              )
 
 # crude + social + clinical + geographical
-mod.final <- coxph(Surv(Time, outcome) ~ exposure
-                   + SexF
-                   + Race
-                   + AGE
-                   + PROBLEMUse
-                   + EDUCATION
-                   + EMPLOYMENT
-                   + RURALdc
-                   + SCI
-                   + RehabPay1
-                   + ResDis
-                   + FIMMOTD4
-                   + FIMCOGD4
-                   + strata(Cause),
-                   data = md)
+mod.final <- update(mod.social.clinical, . ~ .
+                    + ResDis
+                    + RURALdc
+                    )
 
 # # add interaction terms to the model
 # mod.final <- update(mod.final, . ~ . + exposure*(RehabPay1 + RURALdc))
