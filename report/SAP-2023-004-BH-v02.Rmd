@@ -2,7 +2,7 @@
 title: "Analytical Plan for Effect of socioeconomic status in mortality rates after brain injury: retrospective cohort"
 subtitle: 'DOCUMENT: SAP-2023-004-BH-v02'
 author: '**From:** Felipe Figueiredo **To:** Brennan Hickson'
-date: "2023-05-12"
+date: "2023-06-01"
 output:
   html_document:
     fig_caption: yes
@@ -227,12 +227,20 @@ All inferential analyses will be performed in the statistical models (described 
 ### Statistical modeling
 
 The hazard of mortality will be assessed with multivariate Cox regression models.
-In order to assess if there is an effect of the SES of the neighborhood to which the participant was discharged on mortality will be assessed with three models.
-A crude estimate of the HR between each SES quintiles and mortality will be calculated as the basis of interpretation of the effect.
-The best estimate of the true effect will be calculated adjusting for all covariates described in section 4.5.
-This full model will be evaluated for the proportional hazards assumption by testing the Schoenfeld residuals.
-Variables that are significantly associated with time will be removed before the final model is evaluated and described.
-Finally, the same model will be fitted to a filtered dataset that excludes all deaths happening within one year, to assess if there is an effect on late mortality in a sensitivity analysis.
+In order to assess if there is an effect of the SES of the neighborhood to which the participant was discharged on mortality will be assessed with four nested models.
+
+1. A crude estimate of the HR between each SES quintiles and mortality will be calculated as the basis of interpretation of the effect.
+1. Model 2 will include demographic covariates on top of the crude estimate.
+1. Model 3 will include clinical covariates on top of model 2.
+1. The best estimate of the true effect add geographical covariates to model 3, i.e., it will be calculated adjusting for all covariates described in section 4.5.
+
+The estimates on the association between SES quintiles and mortality will be compared across models in a sensitivity analysis to gauge the cumulative effect of each set of covariates.
+
+The proportional hazards assumption will be tested by assessing the the distribution of Schoenfeld residuals against time, the Schoenfeld test and the distribution of Martingale residuals of time-dependent covariates against the null model.
+In order to keep the maximum number of time-dependent covariates in the final model, we plan to perform the residual analysis combining the following approaches: stratification by categorical variables, time splitting and non-linear fitting of covariates using splines.
+Time-dependent covariates that fail these approaches will be removed before the final model is evaluated and described.
+
+<!-- Finally, the same model will be fitted to a filtered dataset that excludes all deaths happening within one year, to assess if there is an effect on late mortality in a sensitivity analysis. -->
 
 ### Missing data
 
