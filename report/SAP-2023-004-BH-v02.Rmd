@@ -242,8 +242,8 @@ In order to assess if there is an effect of the SES of the neighborhood to which
 
 1. A crude estimate of the HR between each SES quintiles and mortality will be calculated as the basis of interpretation of the effect.
 1. Model 2 will include demographic covariates on top of the crude estimate.
-1. Model 3 will include clinical covariates on top of model 2.
-1. The best estimate of the true effect add geographical covariates to model 3, i.e., it will be calculated adjusting for all covariates described in section 4.5.
+1. Model 3 will add clinical covariates on top of model 2.
+1. Model 4 will add geographical covariates to model 3, i.e., it will be calculated adjusting for all covariates described in section 4.5.
 
 The estimates on the association between SES quintiles and mortality will be compared across models in a sensitivity analysis to gauge the cumulative effect of each set of covariates.
 
