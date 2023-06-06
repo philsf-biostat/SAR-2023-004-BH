@@ -8,3 +8,4 @@ source('scripts/modeling.R', encoding = 'UTF-8') |> suppressMessages()
 source('scripts/inference.R', encoding = 'UTF-8') |> suppressMessages()
 source('scripts/plots.R', encoding = 'UTF-8') |> suppressMessages()
 # source('scripts/plots-save.R', encoding = 'UTF-8') |> suppressMessages() ## only manual!
+# source('scripts/model-diagnostics.R', encoding = 'UTF-8') |> suppressMessages()
