@@ -35,17 +35,44 @@ mod.full <- coxph(Surv(Time, outcome) ~ exposure +
                     FIMCOGD,
                   md)
 
-# remove vars after Schoenfeld test
-mod.final <- update(mod.full, . ~ .
-                    -FIMMOTD
-                    -FIMCOGD
-                    -DAYStoREHABdc
-                    -Cause
-                    +strata(Cause)
-                    +FIMMOTD4
-                    +FIMCOGD4
-                    )
+# # remove vars after Schoenfeld test
+# mod.final <- update(mod.full, . ~ .
+#                     -FIMMOTD
+#                     -FIMCOGD
+#                     -DAYStoREHABdc
+#                     -Cause
+#                     +strata(Cause)
+#                     +FIMMOTD4
+#                     +FIMCOGD4
+#                     )
 
+# nested models -----------------------------------------------------------
+
+# crude + social
+mod.social <- coxph(Surv(Time, outcome) ~ exposure
+                    + SexF
+                    + Race
+                    + AGE
+                    + EDUCATION
+                    + EMPLOYMENT,
+                    data = md)
+
+# crude + social + clinical
+mod.social.clinical <- coxph(Surv(Time, outcome) ~ exposure
+                             + SexF
+                             + Race
+                             + AGE
+                             + PROBLEMUse
+                             + EDUCATION
+                             + EMPLOYMENT
+                             + SCI
+                             + RehabPay1
+                             + FIMMOTD4
+                             + FIMCOGD4
+                             + strata(Cause),
+                             data = md)
+
+# crude + social + clinical + geographical
 mod.final <- coxph(Surv(Time, outcome) ~ exposure
                    + SexF
                    + Race
