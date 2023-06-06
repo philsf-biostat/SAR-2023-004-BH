@@ -164,6 +164,7 @@ Retrospective cohort.
 
 - Participants with at most 10 years of follow up;
 - Participants included in the cohort between `r study_period[1]` and `r study_period[2]`.
+- Participants with non-negative time under observation.
 
 **Exclusion criteria**
 
