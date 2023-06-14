@@ -1,5 +1,5 @@
 ---
-title: 'Effect of socioeconomic status in mortality rates after brain injury: retrospective cohort'
+title: 'Effect of socioeconomic status in mortality rates after brain injury: cohort study'
 date: "2023-02-10"
 permalink: /portfolio/SAR-2023-004/
 redirect_from:
@@ -48,7 +48,7 @@ Statistical Analysis for Brennan Hickson (US, 2023)
 
 This analysis is part of a larger project and is supported by other analyses, linked below.
 
-**Migration patterns in a cohort of individuals with brain injury in the US**
+**Time-adjusted effect of socioeconomic status in mortality rates after brain injury: cohort study**
 
 <https://philsf-biostat.github.io/SAR-2023-016-BH/>
 

@@ -1,8 +1,8 @@
 ---
-title: "Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort"
-subtitle: 'DOCUMENT: SAR-2023-004-BH-v01'
+title: "Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: cohort study"
+subtitle: 'DOCUMENT: SAR-2023-004-BH-v02'
 author: '**From:** Felipe Figueiredo **To:** Brennan Hickson'
-date: "2023-02-10"
+date: "2023-05-12"
 output:
   html_document:
     fig_caption: yes
@@ -37,13 +37,13 @@ panderOptions('table.split.table', 160)
 
 \newpage
 
-**Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort**
+**Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: cohort study**
 
 **Document version**
 
 ```{r history}
-Version <- c("01")
-Changes <- c("Initial version")
+Version <- c("01", "02")
+Changes <- c("Initial version", "Don't impute missing Zip codes for SES data; title + design now reflect a prospectively collected cohort study.")
 history <- cbind(Version, Changes)
 colnames(history) <- c("Version", "Alterations")
 # pander(history, split.cells = 70)
@@ -73,7 +73,7 @@ To determine the effect of socioeconomic status of the neighborhood on mortality
 
 # Methods
 
-The data procedures, design and analysis methods used in this report are fully described in the annex document **SAP-2023-004-BH-v01**.
+The data procedures, design and analysis methods used in this report are fully described in the annex document **SAP-2023-004-BH-v02**.
 
 <!-- ## Study parameters -->
 
@@ -161,7 +161,9 @@ when compared to those discharged to a prosperous neighborhood.
 tab_inf %>%
   as_kable(              # only for markdown
   # as_flex_table(       # only for DOCX
-    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, cause of injury, rehabilitation payer, residence after rehab discharge, days from injury to discharge, FIM motor and FIM cognitive at discharge."
+  # ) %>%
+  # flextable::set_caption(
+    caption = "**Table 2** Effect of SES on mortality; HR estimates were adjusted for sex, race, age, substance abuse, education, employment status, urbanization, spinal cord injury, rehabilitation payer, residence after rehab discharge and days from injury to discharge."
   )
 
 range_crude <- tab_inf$tbls[[1]]$table_body$estimate %>% range(na.rm = TRUE) %>% style_number(2)
@@ -200,7 +202,7 @@ Both early deaths and late deaths appear to occur at similar rates across all ne
 
 # References
 
-- **SAP-2023-004-BH-v01** -- Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
+- **SAP-2023-004-BH-v02** -- Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: cohort study
 - von Elm E, Altman DG, Egger M, Pocock SJ, Gøtzsche PC, Vandenbroucke JP; STROBE Initiative. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: guidelines for reporting observational studies. Int J Surg. 2014 Dec;12(12):1495-9 (<https://doi.org/10.1016/j.ijsu.2014.07.013>).
 
 # Appendix
@@ -253,6 +255,18 @@ All documents from this consultation were included in the consultant's Portfolio
 The portfolio is available at:
 
 <https://philsf-biostat.github.io/SAR-2023-004-BH/>
+
+## Associated analyses
+
+This analysis is part of a larger project and is supported by other analyses, linked below.
+
+**Time-adjusted effect of socioeconomic status in mortality rates after brain injury: cohort study**
+
+<https://philsf-biostat.github.io/SAR-2023-016-BH/>
+
+**Sensitivity of mortality rates to imputation of missing socioeconomic data after brain injury: cohort study**
+
+<https://philsf-biostat.github.io/SAR-2023-017-BH/>
 
 ## Analytical dataset
 

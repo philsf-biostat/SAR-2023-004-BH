@@ -1,8 +1,8 @@
 ---
-title: "Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort"
-subtitle: 'DOCUMENT: SAP-2023-004-BH-v01'
+title: "Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: cohort study"
+subtitle: 'DOCUMENT: SAP-2023-004-BH-v02'
 author: '**From:** Felipe Figueiredo **To:** Brennan Hickson'
-date: "2023-01-12"
+date: "2023-04-21"
 output:
   html_document:
     fig_caption: yes
@@ -23,22 +23,36 @@ output:
 # toc-title: "Sumário"
 ---
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = normalizePath(".."))
+options(scipen = 999)
+library(pander)
+library(knitr)
+panderOptions('table.style', 'rmarkdown')
+panderOptions('table.split.table', 160)
+```
 
 ---
 
 \newpage
 
-**Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort**
+**Analytical Plan for Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: cohort study**
 
 **Document version**
 
+```{r history}
+Version <- c("01", "02")
+Changes <- c("Initial version", "Don't impute missing Zip codes for SES data; title + design now reflect a prospectively collected cohort study.")
+history <- cbind(Version, Changes)
+colnames(history) <- c("Version", "Alterations")
+# pander(history, split.cells = 70)
+kable(history)
+```
 
-|Version |Alterations     |
-|:-------|:---------------|
-|01      |Initial version |
-
-
+```{r cleaning, include=FALSE}
+source("scripts/input.R", encoding = 'UTF-8')
+```
 
 ---
 
@@ -66,21 +80,21 @@ The neighborhood to which an individual is discharged from acute care affects th
 The raw data was received in three distinct databases, one containing clinical and epidemiological data, a second one with follow up on the status of individuals and a third one containing SES information of each Zip code.
 The clinical and followup tables were merged by study ID, and this was joined with the SES table by the Zip code of the neighborhood of discharge, resulting in the original raw data base.
 
-Before joining the tables by zip code, the missing locations at discharged were assumed to not have changed since injury, and those values were used to fill missing zip data where available.
-To maximize the availability of SES data, this was also assumed for each follow up location, where the preferred information used was the zip code at discharge, when available.
+<!-- Before joining the tables by zip code, the missing locations at discharged were assumed to not have changed since injury, and those values were used to fill missing zip data where available. -->
+<!-- To maximize the availability of SES data, this was also assumed for each follow up location, where the preferred information used was the zip code at discharge, when available. -->
 
 The original data base had
-711
+`r Nvar_orig`
 variables collected on
-76665
+`r Nobs_orig`
 observations from
-19303 individuals.
+`r Nobs_orig_id` individuals.
 
 <!-- Upon study start the raw data will be collected in a raw table, that will be processed before analysis. -->
 <!-- The raw dataset to be collected will have -->
-<!-- 711 -->
+<!-- `r Nvar_orig` -->
 <!-- variables collected on -->
-<!-- 76665 -->
+<!-- `r Nobs_orig` -->
 <!-- observations. -->
 
 <!-- This dataset will include the dates of entry and exit of the cohort, or the date of hospital admission and the date where the endpoint was reached (either an event, or hospital discharge). -->
@@ -120,18 +134,21 @@ All variables in the raw dataset had varying missing data codes in the data dict
 Most of the categorical variables were measured with many levels that were condensed into fewer levels for analysis.
 
 <!-- After the cleaning process -->
-<!-- 20 -->
+<!-- `r Nvar_final` -->
 <!-- variables were included in the analysis -->
 <!-- with -->
-<!-- 7415 -->
+<!-- `r Nobs_final` -->
 <!-- observations. -->
 After the cleaning process
-20
+`r Nvar_final`
 variables were included in the analysis.
 The total number of observations excluded due to incompleteness and exclusion criteria will be reported in the analysis.
 <!-- Table 1 shows the structure of the analytical dataset. -->
 
-
+```{r analytical data}
+# analytical_mockup %>%
+#   pander(caption = "**Table 1** Analytical dataset structure after variable selection and cleaning.")
+```
 
 All variables in the analytical set were labeled according to the raw data provided and values were labeled according to the data dictionary for the preparation of production-quality results tables and figures.
 
@@ -139,14 +156,14 @@ All variables in the analytical set were labeled according to the raw data provi
 
 ## Study design
 
-Retrospective cohort.
+This is a retrospective analysis of a prospective cohort study.
 
 ## Inclusion and exclusion criteria
 
 **Inclusion criteria**
 
 - Participants with at most 10 years of follow up;
-- Participants included in the cohort between 2010-01-01 and 2018-12-31.
+- Participants included in the cohort between `r study_period[1]` and `r study_period[2]`.
 
 **Exclusion criteria**
 
@@ -237,7 +254,7 @@ N/A
 
 ## Statistical packages
 
-This analysis will be performed using statistical software `R` version 4.2.1.
+This analysis will be performed using statistical software `R` version `r getRversion()`.
 
 # Observations and limitations
 
@@ -250,7 +267,7 @@ All observational studies are recommended to be reported following the STROBE gu
 
 # References
 
-- **SAR-2023-004-BH-v01** -- Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: retrospective cohort
+- **SAR-2023-004-BH-v02** -- Effect of socioeconomic status of neighborhoods in mortality mortality rates after brain injury: cohort study
 <!-- - Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd Ed.). New York: Routledge. -->
 - Zarin DA, et al. The ClinicalTrials.gov results database -- update and key issues. N Engl J Med 2011;364:852-60 (<https://doi.org/10.1056/NEJMsa1012065>).
 - Gamble C, et al. Guidelines for the Content of Statistical Analysis Plans in Clinical Trials. JAMA. 2017;318(23):2337–2343 (<https://doi.org/10.1001/jama.2017.18556>).
@@ -274,3 +291,15 @@ All documents from this consultation were included in the consultant's Portfolio
 The portfolio is available at:
 
 <https://philsf-biostat.github.io/SAR-2023-004-BH/>
+
+## Associated analyses
+
+This analysis is part of a larger project and is supported by other analyses, linked below.
+
+**Time-adjusted effect of socioeconomic status in mortality rates after brain injury: cohort study**
+
+<https://philsf-biostat.github.io/SAR-2023-016-BH/>
+
+**Sensitivity of mortality rates to imputation of missing socioeconomic data after brain injury: cohort study**
+
+<https://philsf-biostat.github.io/SAR-2023-017-BH/>

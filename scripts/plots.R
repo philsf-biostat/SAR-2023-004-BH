@@ -48,7 +48,7 @@ gg.ses <- gg +
 
 # survival curves ---------------------------------------------------------
 
-cxsf <- survfit(mod.final, newdata = newdat, conf.type = "none")
+cxsf <- survfit(mod.final, newdata = newdat)
 surv_cxsf <- surv_summary(cxsf, data = analytical) %>% tibble()
 m_newdat <- newdat[as.character(surv_cxsf$strata), ]
 
