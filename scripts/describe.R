@@ -22,4 +22,4 @@ analytical %>% group_by(exposure) %>% skimr::skim(outcome)
 
 # tables are created in tables-save.R and saved to disk. They are loaded here
 
-tab_desc <- read_rds("dataset/tab_desc.rds")
+tab_desc <- read_rds("dataset/tab_desc_004.rds")

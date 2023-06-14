@@ -1,4 +1,4 @@
-# Effect of socioeconomic status in mortality rates after brain injury: retrospective cohort
+# Effect of socioeconomic status in mortality rates after brain injury: cohort study
 
 To determine the effect of socioeconomic status of the neighborhood on mortality of patients with brain injury.
 
@@ -33,7 +33,7 @@ Statistical Analysis for Brennan Hickson (US, 2023)
 
 This analysis is part of a larger project and is supported by other analyses, linked below.
 
-**Migration patterns in a cohort of individuals with brain injury in the US**
+**Time-adjusted effect of socioeconomic status in mortality rates after brain injury: cohort study**
 
 <https://philsf-biostat.github.io/SAR-2023-016-BH/>
 
