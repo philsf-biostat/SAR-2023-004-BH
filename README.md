@@ -13,18 +13,21 @@ Statistical Analysis for Brennan Hickson (US, 2023)
 
 ## Documents
 
+Version 2 was released on May, 2023 changing: Data and a title update.
+Version 1 below is a historic version.
+
 ### Analytical Plan (SAP)
 
-<!-- - [Online visualization][sapviz-v02] -->
-<!-- - [PDF][sappdf-v02] -->
+- [Online visualization][sapviz-v02]
+- [PDF][sappdf-v02]
 
 - [Online visualization][sapviz-v01]
 - [PDF][sappdf-v01]
 
 ### Statistical Analysis Report (SAR)
 
-<!-- - [Online visualization][reportviz-v02] -->
-<!-- - [PDF][pdf-v02] -->
+- [Online visualization][reportviz-v02]
+- [PDF][pdf-v02]
 
 - [Online visualization][reportviz-v01]
 - [PDF][pdf-v01]

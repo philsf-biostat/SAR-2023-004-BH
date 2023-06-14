@@ -36,13 +36,18 @@ Statistical Analysis for Brennan Hickson (US, 2023)
 <!-- The client has requested that this analysis be kept confidential. -->
 <!-- All documents from this consultation are therefore not published online and only the title and year of the analysis will be included in the consultant's Portfolio. -->
 
+Version 2 was released on May, 2023 changing: Data and a title update.
+Version 1 below is a historic version.
+
 ### Analytical Plan (SAP)
 
-- [PDF][sap]
+- [PDF (Version 2)][sapv2]
+- [PDF (Version 1)][sapv1]
 
 ### Statistical Analysis Report (SAR)
 
-- [PDF][sar]
+- [PDF (Version 2)][sarv2]
+- [PDF (Version 1)][sarv1]
 
 ## Associated analyses
 
@@ -58,5 +63,7 @@ This analysis is part of a larger project and is supported by other analyses, li
 
 <!-- --- -->
 
-[sap]: /files/SAP-2023-004-BH-v01.pdf
-[sar]: /files/SAR-2023-004-BH-v01.pdf
+[sapv1]: /files/SAP-2023-004-BH-v01.pdf
+[sarv1]: /files/SAR-2023-004-BH-v01.pdf
+[sapv2]: /files/SAP-2023-004-BH-v02.pdf
+[sarv2]: /files/SAR-2023-004-BH-v02.pdf
